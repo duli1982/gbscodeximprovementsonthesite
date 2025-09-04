@@ -1,0 +1,67 @@
+[
+  {
+    "title": "RPO AI Acceleration Program",
+    "description": "The complete, multi-phase training curriculum for all RPO team members, from AI foundations to leadership strategy.",
+    "url": "/rpo-training/"
+  },
+  {
+    "title": "Guide for GBS Leaders",
+    "description": "An interactive training for GBS leaders, complete with prompt libraries, simulators, and case studies.",
+    "url": "/gbs-ai-workshop/"
+  },
+  {
+    "title": "Daily Sourcing Focus",
+    "description": "A daily micro-coaching tool with actionable focus cards designed to sharpen the skills of our talent sourcers.",
+    "url": "/daily-focus/"
+  },
+  {
+    "title": "GBS AI Prompts Library",
+    "description": "A comprehensive and searchable library of expert prompts designed to accelerate daily tasks for GBS professionals.",
+    "url": "/gbs-prompts/"
+  },
+  {
+    "title": "Knowledge Content",
+    "description": "Access a wealth of knowledge content here.",
+    "url": "/knowledge-content/"
+  },
+  {
+    "title": "AI SME",
+    "description": "Explore expert AI knowledge and resources.",
+    "url": "/ai-sme/"
+  },
+  {
+    "title": "AI Ethics & Compliance",
+    "description": "Guidance on data privacy, fairness, and Randstad's AI policies.",
+    "url": "/ai-ethics/"
+  },
+  {
+    "title": "AI Success Stories",
+    "description": "Real-world examples and case studies showcasing how AI transforms daily work at Randstad GBS. See the impact firsthand.",
+    "url": "/use-cases/"
+  },
+  {
+    "title": "Sourcing Workshop",
+    "description": "An in-depth workshop dedicated to advanced sourcing techniques, market intelligence, and candidate engagement.",
+    "url": "/sourcing-workshop/"
+  },
+  {
+    "title": "AI Glossary",
+    "description": "Quick reference of common AI terms and definitions.",
+    "url": "/ai-glossary/"
+  },
+  {
+    "title": "FAQ",
+    "description": "Answers to common AI questions, access issues, and escalation paths.",
+    "url": "/faq/"
+  },
+  {
+    "title": "Resource Templates",
+    "description": "Download reusable documents like sourcing scripts and policy checklists.",
+    "url": "/resources/"
+  },
+  {
+    "title": "Events & Sessions",
+    "description": "View upcoming training dates and register to participate.",
+    "url": "/events/"
+  }
+]
