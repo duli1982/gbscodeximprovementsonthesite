@@ -1,0 +1,44 @@
+{
+  "marketIntelligence": {
+    "lessons": [
+      "Identify relevant data sources",
+      "Analyze supply and demand trends",
+      "Develop target candidate profiles"
+    ],
+    "exercises": [
+      "Use a market report to map three emerging talent hubs.",
+      "Create a brief comparing competitor hiring trends."
+    ],
+    "resources": [
+      {
+        "text": "Gartner: Talent Intelligence",
+        "url": "https://www.gartner.com/en/human-resources/insights/talent-intelligence"
+      },
+      {
+        "text": "LinkedIn Talent Blog",
+        "url": "https://www.linkedin.com/talent/blog"
+      }
+    ]
+  },
+  "engagementTactics": {
+    "lessons": [
+      "Craft personalized outreach messages",
+      "A/B test subject lines and calls to action",
+      "Design follow-up cadences"
+    ],
+    "exercises": [
+      "Draft a cold outreach message for a niche role.",
+      "Experiment with two follow-up templates and compare response rates."
+    ],
+    "resources": [
+      {
+        "text": "HireRabbit Sourcing Tips",
+        "url": "https://www.hirerabbit.com/blog/sourcing-candidates/"
+      },
+      {
+        "text": "RecruitingDaily: Sourcing Articles",
+        "url": "https://www.recruitingdaily.com/category/sourcing/"
+      }
+    ]
+  }
+}
