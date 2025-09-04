@@ -467,6 +467,12 @@
                 <button id="tab-all" class="px-4 py-2 rounded bg-indigo-600 text-white">All</button>
                 <button id="tab-favorites" class="px-4 py-2 rounded bg-gray-200 text-gray-700">Favorites</button>
             </div>
+            <div class="mt-4 flex justify-center">
+                <label for="unit-filter" class="sr-only">Filter by unit</label>
+                <select id="unit-filter" class="p-2 border border-gray-300 rounded">
+                    <option value="All">All Units</option>
+                </select>
+            </div>
         </header>
         <section id="top-recruiting-prompts" class="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
             <h2 class="text-2xl font-bold text-center mb-6">Top Recruiting Prompts</h2>
@@ -647,6 +653,14 @@
                 promptData = data.promptData;
                 flattenPrompts();
 
+                const units = Array.from(new Set(allPrompts.map(p => p.unit))).sort();
+                units.forEach(unit => {
+                    const opt = document.createElement('option');
+                    opt.value = unit;
+                    opt.textContent = unit;
+                    unitFilter.appendChild(opt);
+                });
+
                 const topRecruitingContainer = document.getElementById('top-recruiting-prompts-list');
                 if (topRecruitingContainer) {
                     const topRecruitingPrompts = allPrompts
@@ -760,6 +774,7 @@
         const backToHomeBtn = document.getElementById('back-to-home-btn');
         const homepageSearchInput = document.getElementById('homepage-search');
         const clearSearchBtn = document.getElementById('clear-search-btn');
+        const unitFilter = document.getElementById('unit-filter');
         const gemModal = document.getElementById('gem-modal');
         const closeGemModalBtn = document.getElementById('close-gem-modal-btn');
         const generateGemBtn = document.getElementById('generate-gem-btn');
@@ -769,6 +784,7 @@
         const tabAllBtn = document.getElementById('tab-all');
         const tabFavoritesBtn = document.getElementById('tab-favorites');
         let currentTab = 'all';
+        let selectedUnit = 'All';
 
         // ===== Helpers for Quick Start, Expected Output, and badges =====
 
@@ -928,6 +944,18 @@
         function renderHomepage() {
             categoryCardsContainer.innerHTML = '';
             categoryCardsContainer.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
+            if (selectedUnit !== 'All') {
+                const prompts = allPrompts.filter(p => p.unit === selectedUnit);
+                if (prompts.length === 0) {
+                    categoryCardsContainer.innerHTML = `<p class="text-center col-span-full text-gray-500">No prompts found.</p>`;
+                    return;
+                }
+                prompts.forEach(prompt => {
+                    const promptEl = createPromptElement(prompt, true);
+                    categoryCardsContainer.appendChild(promptEl);
+                });
+                return;
+            }
             for (const categoryName in promptData) {
                 const category = promptData[categoryName];
                 const subCategories = Object.keys(category);
@@ -1204,7 +1232,10 @@
         function renderFavorites() {
             categoryCardsContainer.innerHTML = '';
             categoryCardsContainer.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
-            const favorites = allPrompts.filter(p => isFavorite(p.id));
+            let favorites = allPrompts.filter(p => isFavorite(p.id));
+            if (selectedUnit !== 'All') {
+                favorites = favorites.filter(p => p.unit === selectedUnit);
+            }
             if (favorites.length === 0) {
                 categoryCardsContainer.innerHTML = `<p class="text-center col-span-full text-gray-500">No favorite prompts saved.</p>`;
                 return;
@@ -1297,9 +1328,12 @@ function hideGemModal() {
                 return;
             }
             clearSearchBtn.classList.remove('hidden');
-            const source = currentTab === 'favorites'
+            let source = currentTab === 'favorites'
                 ? allPrompts.filter(p => isFavorite(p.id))
                 : allPrompts;
+            if (selectedUnit !== 'All') {
+                source = source.filter(p => p.unit === selectedUnit);
+            }
             const filteredPrompts = source.filter(prompt => {
                 const titleMatch = (prompt.title || '').toLowerCase().includes(searchTerm);
                 const contentMatch = (prompt.content || '').toLowerCase().includes(searchTerm);
@@ -1315,6 +1349,13 @@ function hideGemModal() {
             } else {
                 renderHomepage();
             }
+        });
+
+        unitFilter.addEventListener('change', () => {
+            selectedUnit = unitFilter.value;
+            homepageSearchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            currentTab === 'favorites' ? renderFavorites() : renderHomepage();
         });
 
         function setActiveTab(tab) {
