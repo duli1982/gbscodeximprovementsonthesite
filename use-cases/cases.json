@@ -1,0 +1,169 @@
+{
+  "categories": [
+    { "id": "sourcing", "label": "Talent Sourcing" },
+    { "id": "content", "label": "Content Creation" },
+    { "id": "analysis", "label": "Data Analysis" },
+    { "id": "communication", "label": "Communication" }
+  ],
+  "cases": [
+    {
+      "id": "boolean-search",
+      "category": "sourcing",
+      "impact": "75% Time Saved",
+      "title": "AI-Powered Boolean Search Generation",
+      "before": [
+        "45 minutes to craft complex searches",
+        "Manual keyword research",
+        "Trial and error approach",
+        "Limited search variations"
+      ],
+      "after": [
+        "10 minutes for comprehensive searches",
+        "AI suggests relevant keywords",
+        "Multiple search strings generated",
+        "Platform-specific optimization"
+      ],
+      "example": {
+        "heading": "Real Example:",
+        "input": "Senior Java Developer with microservices experience",
+        "output": "(Java OR \"Java Developer\") AND (Senior OR \"Sr.\" OR Lead) AND (microservices OR \"micro services\" OR \"service oriented\") AND -junior -intern"
+      },
+      "demo": "sourcing-demo"
+    },
+    {
+      "id": "jd-writing",
+      "category": "content",
+      "impact": "80% Faster",
+      "title": "Intelligent Job Description Creation",
+      "before": [
+        "2 hours per job description",
+        "Copy-paste from old JDs",
+        "Generic, uninspiring content",
+        "Inconsistent formatting"
+      ],
+      "after": [
+        "25 minutes for complete JD",
+        "Tailored, engaging content",
+        "Industry-specific language",
+        "Consistent, professional format"
+      ],
+      "stats": [
+        { "value": "+40%", "label": "Application Rate", "color": "green" },
+        { "value": "+60%", "label": "Quality Candidates", "color": "blue" }
+      ],
+      "demo": "content-demo"
+    },
+    {
+      "id": "candidate-outreach",
+      "category": "communication",
+      "impact": "3x Response Rate",
+      "title": "Personalized Candidate Outreach",
+      "before": [
+        "Generic template messages",
+        "15% response rate",
+        "Time-consuming personalization",
+        "Inconsistent tone"
+      ],
+      "after": [
+        "Highly personalized messages",
+        "45% response rate",
+        "Automated personalization",
+        "Professional, engaging tone"
+      ],
+      "badges": {
+        "heading": "Personalization Elements:",
+        "items": [
+          { "text": "Company Research", "color": "blue" },
+          { "text": "Role Relevance", "color": "green" },
+          { "text": "Career Progression", "color": "purple" },
+          { "text": "Industry Insights", "color": "orange" }
+        ]
+      },
+      "demo": "communication-demo"
+    },
+    {
+      "id": "market-analysis",
+      "category": "analysis",
+      "impact": "90% Accuracy",
+      "title": "Automated Market Intelligence",
+      "before": [
+        "4 hours for market research",
+        "Manual data compilation",
+        "Outdated information",
+        "Limited scope analysis"
+      ],
+      "after": [
+        "30 minutes for comprehensive report",
+        "Real-time data aggregation",
+        "Current market trends",
+        "Multi-dimensional analysis"
+      ],
+      "list": {
+        "heading": "Analysis Includes:",
+        "items": [
+          "Salary benchmarking",
+          "Skill demand trends",
+          "Competitor analysis",
+          "Location insights"
+        ]
+      },
+      "demo": "analysis-demo"
+    },
+    {
+      "id": "interview-prep",
+      "category": "content",
+      "impact": "85% Better Prep",
+      "title": "AI-Generated Interview Questions",
+      "before": [
+        "Generic interview questions",
+        "1 hour prep per interview",
+        "Limited question variety",
+        "Inconsistent evaluation"
+      ],
+      "after": [
+        "Role-specific questions",
+        "15 minutes prep time",
+        "Diverse question types",
+        "Structured evaluation criteria"
+      ],
+      "badges": {
+        "heading": "Question Categories:",
+        "items": [
+          { "text": "Technical Skills", "color": "indigo" },
+          { "text": "Behavioral", "color": "pink" },
+          { "text": "Situational", "color": "yellow" },
+          { "text": "Culture Fit", "color": "teal" }
+        ]
+      },
+      "demo": "interview-demo"
+    },
+    {
+      "id": "performance-reports",
+      "category": "analysis",
+      "impact": "70% Time Saved",
+      "title": "Automated Performance Reporting",
+      "before": [
+        "3 hours for monthly reports",
+        "Manual data entry",
+        "Basic charts and graphs",
+        "Limited insights"
+      ],
+      "after": [
+        "45 minutes for comprehensive reports",
+        "Automated data processing",
+        "Interactive visualizations",
+        "Predictive insights"
+      ],
+      "list": {
+        "heading": "Report Features:",
+        "items": [
+          "KPI tracking",
+          "Trend analysis",
+          "Goal progress",
+          "Recommendations"
+        ]
+      },
+      "demo": "reporting-demo"
+    }
+  ]
+}
