@@ -135,21 +135,50 @@
         const cardCounter = document.getElementById('card-counter');
 
         // --- State Management ---
-        function initializeData(focusPointsData) {
-            focusPoints = focusPointsData.map((point, index) => ({ ...point, id: `fp-${index}` }));
+        let allContent = []; // Will hold both focus points and prompts
 
-            categoryCounts = focusPoints.reduce((acc, point) => {
+        function initializeData(focusPointsData, promptsData) {
+            const processedFocusPoints = focusPointsData.map((point, index) => ({
+                ...point,
+                id: `fp-${index}`,
+                type: 'Focus Point'
+            }));
+
+            focusPoints = processedFocusPoints; // Keep original focus points for 'Card of the Day'
+
+            const processedPrompts = [];
+            for (const category in promptsData) {
+                for (const subcategory in promptsData[category]) {
+                    promptsData[category][subcategory].forEach(prompt => {
+                        processedPrompts.push({
+                            ...prompt,
+                            type: 'Prompt',
+                            category: category,
+                            subcategory: subcategory,
+                            // Ensure prompts have fields needed for card creation
+                            quote: prompt.description || '',
+                            actions: [prompt.content]
+                        });
+                    });
+                }
+            }
+
+            allContent = [...processedFocusPoints, ...processedPrompts];
+
+            categoryCounts = allContent.reduce((acc, point) => {
                 acc[point.category] = (acc[point.category] || 0) + 1;
                 return acc;
             }, {});
-            categoryCounts['All'] = focusPoints.length;
+            categoryCounts['All'] = allContent.length;
 
             const savedProgress = localStorage.getItem('sourcingFocusProgress');
             if (savedProgress) {
                 progressState = JSON.parse(savedProgress);
             } else {
-                focusPoints.forEach(point => {
-                    progressState[point.id] = Array(point.actions.length).fill(false);
+                allContent.forEach(point => {
+                    if(point.type === 'Focus Point') {
+                        progressState[point.id] = Array(point.actions.length).fill(false);
+                    }
                 });
             }
         }
@@ -165,35 +194,50 @@
             cardElement.className = 'card w-full bg-white p-6 rounded-xl shadow-lg border border-gray-200';
             cardElement.dataset.pointId = pointId;
 
-            const actionsHtml = point.actions.map((action, index) => {
-                const isChecked = progressState[pointId] ? progressState[pointId][index] : false;
-                return `
-                    <li class="action-item rounded-lg ${isChecked ? 'completed' : ''}">
-                        <label for="action-${pointId}-${index}" class="flex items-center p-3 cursor-pointer">
-                            <input id="action-${pointId}-${index}" type="checkbox"
-                                   class="h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                   ${isChecked ? 'checked' : ''}
-                                   onchange="handleCheckboxChange(this, '${pointId}', ${index})">
-                            <span class="ml-3 text-gray-700">${action}</span>
-                        </label>
-                    </li>
+            let actionsHtml;
+            let progressHtml = '';
+            let headerHtml = `<span class="text-sm font-semibold text-indigo-600">${point.category}</span>`;
+
+            if (point.type === 'Focus Point') {
+                actionsHtml = point.actions.map((action, index) => {
+                    const isChecked = progressState[pointId] ? progressState[pointId][index] : false;
+                    return `
+                        <li class="action-item rounded-lg ${isChecked ? 'completed' : ''}">
+                            <label for="action-${pointId}-${index}" class="flex items-center p-3 cursor-pointer">
+                                <input id="action-${pointId}-${index}" type="checkbox"
+                                       class="h-5 w-5 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                       ${isChecked ? 'checked' : ''}
+                                       onchange="handleCheckboxChange(this, '${pointId}', ${index})">
+                                <span class="ml-3 text-gray-700">${action}</span>
+                            </label>
+                        </li>
+                    `;
+                }).join('');
+                progressHtml = `
+                    <div class="progress-bar w-full bg-gray-200 rounded-full h-2.5 mb-4">
+                        <div class="progress-bar-inner bg-green-500 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
                 `;
-            }).join('');
+                headerHtml = `
+                    <span class="text-sm font-semibold text-indigo-600">${point.category}</span>
+                    <span class="progress-text text-sm font-medium text-gray-500"></span>
+                `;
+            } else { // It's a Prompt
+                actionsHtml = `<li class="p-3 text-gray-700 whitespace-pre-wrap bg-gray-50 rounded-lg">${point.actions[0]}</li>`;
+                 headerHtml = `<span class="text-sm font-semibold text-purple-600">${point.type}</span>`;
+            }
 
             cardElement.innerHTML = `
                 <div>
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-sm font-semibold text-indigo-600">${point.category}</span>
-                        <span class="progress-text text-sm font-medium text-gray-500"></span>
+                        ${headerHtml}
                     </div>
-                    <div class="progress-bar w-full bg-gray-200 rounded-full h-2.5 mb-4">
-                        <div class="progress-bar-inner bg-green-500 h-2.5 rounded-full" style="width: 0%"></div>
-                    </div>
+                    ${progressHtml}
                     <h3 class="text-lg md:text-xl font-bold text-gray-800">${point.title}</h3>
                     <p class="text-gray-500 italic my-2 text-sm md:text-base">"${point.quote}"</p>
                 </div>
                 <div>
-                    <p class="font-semibold mb-2 text-gray-700">Action Items:</p>
+                    <p class="font-semibold mb-2 text-gray-700">${point.type === 'Focus Point' ? 'Action Items:' : 'Content:'}</p>
                     <ul class="space-y-2">${actionsHtml}</ul>
                     <div class="completion-banner hidden mt-4 p-4 bg-green-100 border-l-4 border-green-500 rounded-r-lg">
                         <div class="flex">
@@ -274,7 +318,7 @@
 
         // --- Deck Management for Library ---
         function loadDeck(category = 'All') {
-            currentDeck = (category === 'All') ? [...focusPoints] : focusPoints.filter(p => p.category === category);
+            currentDeck = (category === 'All') ? [...allContent] : allContent.filter(p => p.category === category);
             currentIndex = 0;
             showCardInLibrary(currentIndex);
             updateActiveFilterButton(category);
@@ -294,7 +338,9 @@
             const point = currentDeck[index];
             const card = createCard(point);
             cardContainer.appendChild(card);
-            updateProgressUI(point.id);
+            if (point.type === 'Focus Point') {
+                updateProgressUI(point.id);
+            }
 
             cardCounter.textContent = `${index + 1} / ${currentDeck.length}`;
             prevBtn.disabled = index === 0;
@@ -303,7 +349,7 @@
 
         // --- Filter Buttons ---
         function populateFilters() {
-            const categories = ['All', ...new Set(focusPoints.map(p => p.category))];
+            const categories = ['All', ...new Set(allContent.map(p => p.category))];
             categories.forEach(category => {
                 const button = document.createElement('button');
                 const count = categoryCounts[category] || 0;
@@ -321,17 +367,42 @@
             });
         }
 
+        // --- Direct Linking ---
+        function handleDirectLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const focusId = urlParams.get('focusId');
+            const promptId = urlParams.get('showPrompt');
+            const targetId = focusId || promptId;
+
+            if (targetId) {
+                const itemToShow = allContent.find(item => item.id === targetId);
+                if (itemToShow) {
+                    document.getElementById('card-of-the-day-section').style.display = 'none';
+                    document.querySelector('.text-center.my-8').style.display = 'none';
+
+                    currentDeck = [itemToShow];
+                    currentIndex = 0;
+                    showCardInLibrary(0);
+
+                    document.getElementById('card-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+
         // --- Initial Load & Event Listeners ---
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('focus.json')
-                .then(response => response.json())
-                .then(data => {
-                    initializeData(data);
-                    renderCardOfTheDay();
-                    populateFilters();
-                    loadDeck('All');
-                })
-                .catch(error => console.error('Error fetching focus points:', error));
+             Promise.all([
+                fetch('focus.json').then(res => res.json()),
+                fetch('prompts.json').then(res => res.json())
+            ])
+            .then(([focusData, promptsData]) => {
+                initializeData(focusData, promptsData.promptData);
+                renderCardOfTheDay();
+                populateFilters();
+                loadDeck('All');
+                handleDirectLink();
+            })
+            .catch(error => console.error('Error fetching data:', error));
 
             prevBtn.addEventListener('click', () => {
                 if (currentIndex > 0) {

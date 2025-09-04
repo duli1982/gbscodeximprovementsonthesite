@@ -497,14 +497,7 @@
             </div>
         </header>
 
-        <div class="max-w-2xl mx-auto mb-12 text-center">
-            <h2 class="text-3xl font-bold tracking-tight main-heading mb-4">
-                ✨ Daily Featured Prompt ✨
-            </h2>
-            <div id="featured-prompt">
-                <!-- Featured prompt will be injected here -->
-            </div>
-        </div>
+        <div id="featured-prompt" class="max-w-xl mx-auto mb-12"></div>
 
         <!-- Pro Tips Section -->
         <section class="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
@@ -675,21 +668,40 @@
                 promptData = data.promptData;
                 flattenPrompts();
 
+                // Check for a prompt ID in the URL to show it directly
+                const urlParams = new URLSearchParams(window.location.search);
+                const promptIdToShow = urlParams.get('showPrompt');
+
+                if (promptIdToShow) {
+                    const promptToShow = allPrompts.find(p => p.id === promptIdToShow);
+                    if (promptToShow) {
+                        // Use a timeout to ensure the DOM is ready for the view switch
+                        setTimeout(() => {
+                            openPrompt(promptToShow.id, promptToShow.category, promptToShow.subcategory);
+                        }, 100);
+                    }
+                }
+
                 const now = new Date();
                 const startOfYear = new Date(now.getFullYear(), 0, 0);
                 const diff = now - startOfYear;
                 const oneDay = 1000 * 60 * 60 * 24;
                 const dayOfYear = Math.floor(diff / oneDay);
 
-                const featuredPrompt = allPrompts[dayOfYear % allPrompts.length];
+                let featuredPrompt = allPrompts[dayOfYear % allPrompts.length];
+                const lastSeenPromptId = localStorage.getItem('lastSeenPromptId');
+                if (featuredPrompt && lastSeenPromptId === featuredPrompt.id) {
+                    featuredPrompt = allPrompts[(dayOfYear + 1) % allPrompts.length];
+                }
                 if (featuredPrompt) {
+                    localStorage.setItem('lastSeenPromptId', featuredPrompt.id);
                     const container = document.getElementById('featured-prompt');
                     if (container) {
                         container.innerHTML = `
-                            <div class="prompt-block p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-xl shadow-lg text-left">
-                                <h3 class="text-2xl font-bold mb-3 text-gray-800">${featuredPrompt.title}</h3>
-                                <p class="text-gray-600 mb-6">${featuredPrompt.description || ''}</p>
-                                <a href="#" class="inline-block bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105" onclick="openPrompt('${featuredPrompt.id}','${featuredPrompt.category}','${featuredPrompt.subcategory}')">View Prompt &rarr;</a>
+                            <div class="prompt-block p-6">
+                                <h2 class="text-2xl font-semibold mb-2">${featuredPrompt.title}</h2>
+                                <p class="text-gray-600 mb-4">${featuredPrompt.description || ''}</p>
+                                <a href="#" class="text-blue-600 hover:underline" onclick="openPrompt('${featuredPrompt.id}','${featuredPrompt.category}','${featuredPrompt.subcategory}')">View Prompt →</a>
                             </div>`;
                     }
                 }
