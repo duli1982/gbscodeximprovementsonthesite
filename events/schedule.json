@@ -1,0 +1,26 @@
+[
+  {
+    "title": "GBS AI Workshop",
+    "date": "2025-04-30",
+    "description": "Interactive session for leaders.",
+    "url": "https://example.com/register/workshop"
+  },
+  {
+    "title": "RPO Training Session",
+    "date": "2025-05-05",
+    "description": "Foundations of AI for recruitment.",
+    "url": "https://example.com/register/rpo"
+  },
+  {
+    "title": "Past Example Session",
+    "date": "2024-01-15",
+    "description": "An earlier session that should no longer appear.",
+    "url": "https://example.com/register/past"
+  },
+  {
+    "title": "AI Innovation Summit",
+    "date": "2025-12-01",
+    "description": "Showcase of AI innovations.",
+    "url": "https://example.com/register/summit"
+  }
+]
