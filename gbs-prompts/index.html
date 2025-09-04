@@ -497,7 +497,14 @@
             </div>
         </header>
 
-        <div id="featured-prompt" class="max-w-xl mx-auto mb-12"></div>
+        <div class="max-w-2xl mx-auto mb-12 text-center">
+            <h2 class="text-3xl font-bold tracking-tight main-heading mb-4">
+                ✨ Daily Featured Prompt ✨
+            </h2>
+            <div id="featured-prompt">
+                <!-- Featured prompt will be injected here -->
+            </div>
+        </div>
 
         <!-- Pro Tips Section -->
         <section class="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
@@ -674,20 +681,15 @@
                 const oneDay = 1000 * 60 * 60 * 24;
                 const dayOfYear = Math.floor(diff / oneDay);
 
-                let featuredPrompt = allPrompts[dayOfYear % allPrompts.length];
-                const lastSeenPromptId = localStorage.getItem('lastSeenPromptId');
-                if (featuredPrompt && lastSeenPromptId === featuredPrompt.id) {
-                    featuredPrompt = allPrompts[(dayOfYear + 1) % allPrompts.length];
-                }
+                const featuredPrompt = allPrompts[dayOfYear % allPrompts.length];
                 if (featuredPrompt) {
-                    localStorage.setItem('lastSeenPromptId', featuredPrompt.id);
                     const container = document.getElementById('featured-prompt');
                     if (container) {
                         container.innerHTML = `
-                            <div class="prompt-block p-6">
-                                <h2 class="text-2xl font-semibold mb-2">${featuredPrompt.title}</h2>
-                                <p class="text-gray-600 mb-4">${featuredPrompt.description || ''}</p>
-                                <a href="#" class="text-blue-600 hover:underline" onclick="openPrompt('${featuredPrompt.id}','${featuredPrompt.category}','${featuredPrompt.subcategory}')">View Prompt →</a>
+                            <div class="prompt-block p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-xl shadow-lg text-left">
+                                <h3 class="text-2xl font-bold mb-3 text-gray-800">${featuredPrompt.title}</h3>
+                                <p class="text-gray-600 mb-6">${featuredPrompt.description || ''}</p>
+                                <a href="#" class="inline-block bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105" onclick="openPrompt('${featuredPrompt.id}','${featuredPrompt.category}','${featuredPrompt.subcategory}')">View Prompt &rarr;</a>
                             </div>`;
                     }
                 }
