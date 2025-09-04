@@ -157,6 +157,36 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz-section" class="phase-section border-t border-gray-200 mt-12">
+                <h2 class="google-sans text-3xl font-bold text-center mb-4">Quick Quiz</h2>
+                <form id="rpo-quiz-form" class="space-y-6 max-w-xl mx-auto">
+                    <div>
+                        <label class="block font-semibold mb-2">1. What does the C.R.E.A.T.E. framework help you do?</label>
+                        <div class="space-y-2">
+                            <label class="block"><input type="radio" name="q1" value="a" class="mr-2">Schedule interviews</label>
+                            <label class="block"><input type="radio" name="q1" value="b" class="mr-2">Craft precise prompts</label>
+                            <label class="block"><input type="radio" name="q1" value="c" class="mr-2">Analyze budgets</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-semibold mb-2">2. Which phase focuses on strategic planning?</label>
+                        <div class="space-y-2">
+                            <label class="block"><input type="radio" name="q2" value="a" class="mr-2">Phase 1</label>
+                            <label class="block"><input type="radio" name="q2" value="b" class="mr-2">Phase 2</label>
+                            <label class="block"><input type="radio" name="q2" value="c" class="mr-2">Phase 3</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="rpo-name" class="block font-semibold mb-2">Your name (optional):</label>
+                        <input id="rpo-name" name="name" class="border p-2 w-full">
+                    </div>
+                    <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+                </form>
+                <div id="rpo-quiz-feedback" class="mt-6 text-center"></div>
+                <a id="rpo-download-cert" class="hidden mt-4 bg-green-600 text-white px-4 py-2 rounded inline-block" download="rpo-training-certificate.txt">Download Certificate</a>
+            </section>
         </div>
 
         <div id="session-container"></div>
