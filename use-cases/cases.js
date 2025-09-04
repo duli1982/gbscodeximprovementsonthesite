@@ -149,7 +149,7 @@ Requirements:
 }
 
 // Filter functionality (no inline 'event' usage)
-function filterCases(category, targetButton) {
+function filterCases(filter, targetButton) {
     const cases = document.querySelectorAll('.case-item');
     const filters = document.querySelectorAll('.category-filter');
 
@@ -157,7 +157,11 @@ function filterCases(category, targetButton) {
     if (targetButton) targetButton.classList.add('active');
 
     cases.forEach(c => {
-        if (category === 'all' || c.dataset.category === category) {
+        if (
+            filter === 'all' ||
+            c.dataset.category === filter ||
+            c.dataset.unit === filter
+        ) {
             c.style.display = '';
         } else {
             c.style.display = 'none';
@@ -170,6 +174,8 @@ async function loadCases() {
     const data = await res.json();
     const categoriesMap = {};
     data.categories.forEach(c => { categoriesMap[c.id] = c.label; });
+    const unitsMap = {};
+    data.businessUnits.forEach(u => { unitsMap[u.id] = u.label; });
 
     const filtersEl = document.getElementById('filters');
     const allBtn = document.createElement('button');
@@ -186,14 +192,22 @@ async function loadCases() {
         filtersEl.appendChild(btn);
     });
 
+    data.businessUnits.forEach(unit => {
+        const btn = document.createElement('button');
+        btn.dataset.filter = unit.id;
+        btn.className = 'category-filter px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200';
+        btn.textContent = unit.label;
+        filtersEl.appendChild(btn);
+    });
+
     const container = document.getElementById('cases-container');
-    data.cases.forEach(c => container.appendChild(buildCaseCard(c, categoriesMap)));
+    data.cases.forEach(c => container.appendChild(buildCaseCard(c, categoriesMap, unitsMap)));
 
     const filterButtons = document.querySelectorAll('#filters .category-filter');
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            const cat = btn.dataset.filter || 'all';
-            filterCases(cat, btn);
+            const f = btn.dataset.filter || 'all';
+            filterCases(f, btn);
         });
     });
 
@@ -206,23 +220,33 @@ async function loadCases() {
     });
 }
 
-function buildCaseCard(data, categoriesMap) {
+function buildCaseCard(data, categoriesMap, unitsMap) {
     const card = document.createElement('div');
     card.className = 'use-case-card p-8 rounded-xl case-item';
     card.dataset.category = data.category;
+    card.dataset.unit = data.businessUnit;
 
     const top = document.createElement('div');
     top.className = 'flex items-center justify-between mb-4';
+
+    const badges = document.createElement('div');
+    badges.className = 'flex gap-2';
 
     const catBadge = document.createElement('span');
     catBadge.className = 'category-badge px-3 py-1 rounded-full text-xs font-semibold';
     catBadge.textContent = categoriesMap[data.category] || data.category;
 
+    const unitBadge = document.createElement('span');
+    unitBadge.className = 'category-badge px-3 py-1 rounded-full text-xs font-semibold';
+    unitBadge.textContent = unitsMap[data.businessUnit] || data.businessUnit;
+
+    badges.append(catBadge, unitBadge);
+
     const impact = document.createElement('span');
     impact.className = 'text-green-600 font-semibold';
     impact.textContent = data.impact;
 
-    top.append(catBadge, impact);
+    top.append(badges, impact);
     card.appendChild(top);
 
     const title = document.createElement('h3');
