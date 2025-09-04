@@ -5,10 +5,16 @@
     { "id": "analysis", "label": "Data Analysis" },
     { "id": "communication", "label": "Communication" }
   ],
+  "businessUnits": [
+    { "id": "gbs", "label": "GBS" },
+    { "id": "rpo", "label": "RPO" },
+    { "id": "msp", "label": "MSP" }
+  ],
   "cases": [
     {
       "id": "boolean-search",
       "category": "sourcing",
+      "businessUnit": "rpo",
       "impact": "75% Time Saved",
       "title": "AI-Powered Boolean Search Generation",
       "before": [
@@ -33,6 +39,7 @@
     {
       "id": "jd-writing",
       "category": "content",
+      "businessUnit": "rpo",
       "impact": "80% Faster",
       "title": "Intelligent Job Description Creation",
       "before": [
@@ -56,6 +63,7 @@
     {
       "id": "candidate-outreach",
       "category": "communication",
+      "businessUnit": "rpo",
       "impact": "3x Response Rate",
       "title": "Personalized Candidate Outreach",
       "before": [
@@ -84,6 +92,7 @@
     {
       "id": "market-analysis",
       "category": "analysis",
+      "businessUnit": "gbs",
       "impact": "90% Accuracy",
       "title": "Automated Market Intelligence",
       "before": [
@@ -112,6 +121,7 @@
     {
       "id": "interview-prep",
       "category": "content",
+      "businessUnit": "rpo",
       "impact": "85% Better Prep",
       "title": "AI-Generated Interview Questions",
       "before": [
@@ -140,6 +150,7 @@
     {
       "id": "performance-reports",
       "category": "analysis",
+      "businessUnit": "msp",
       "impact": "70% Time Saved",
       "title": "Automated Performance Reporting",
       "before": [
