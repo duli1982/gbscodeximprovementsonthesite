@@ -57,17 +57,17 @@
         }
 
         .category-card-list a:hover {
-            color: #4A90E2;
+            color: #2C5282;
         }
 
         .see-all-btn {
-            border: 1px solid #4A90E2;
-            color: #4A90E2;
+            border: 1px solid #2C5282;
+            color: #2C5282;
             transition: all 0.2s ease-in-out;
         }
 
         .see-all-btn:hover {
-            background-color: #4A90E2;
+            background-color: #2C5282;
             color: white;
         }
 
@@ -89,7 +89,7 @@
 
         .quick-links-sidebar a:hover,
         .quick-links-sidebar a.active {
-            color: #4A90E2;
+            color: #2C5282;
         }
 
         /* --- General UI Elements --- */
@@ -98,7 +98,7 @@
         }
 
         .accent-text {
-            color: #4A90E2;
+            color: #2C5282;
         }
 
         .hidden {
@@ -371,7 +371,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background-color: #4A90E2;
+            background-color: #2C5282;
             color: white;
             border: none;
             border-radius: 50%;
@@ -479,12 +479,13 @@
             </p>
             <div class="max-w-2xl mx-auto text-lg text-gray-500 mt-4">
                 How To Use:
-                <span id="animated-subtitle" class="font-semibold text-[#4A90E2] inline-block"></span>
+                <span id="animated-subtitle" class="font-semibold text-[#2C5282] inline-block"></span>
             </div>
             <div class="mt-8 max-w-xl mx-auto relative">
+                <label for="homepage-search" class="sr-only">Search prompts</label>
                 <input type="text" id="homepage-search" placeholder="🔍 Search for prompts..."
                     class="w-full p-3 border border-gray-300 rounded-lg text-lg pr-10">
-                <button id="clear-search-btn"
+                <button id="clear-search-btn" aria-label="Clear search"
                     class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -578,6 +579,7 @@
             <aside class="w-1/4 max-w-xs fixed right-0 top-0 bottom-0 bg-white/50 backdrop-blur-sm
                             border-l border-gray-200 p-6 flex flex-col">
                 <h2 class="text-lg font-bold mb-4 main-heading">Quick Links</h2>
+                <label for="quick-links-search" class="sr-only">Search quick links</label>
                 <input type="text" id="quick-links-search" placeholder="🔍 Search links…"
                     class="mb-4 p-2 border border-gray-300 rounded w-full" />
 
