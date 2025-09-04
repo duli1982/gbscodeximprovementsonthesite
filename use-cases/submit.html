@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit AI Success Story - Randstad GBS Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../shared/hub-button.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .google-sans { font-family: 'Google Sans', sans-serif; }
+        body { font-family: 'Roboto', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="google-sans text-xl font-bold text-gray-900">Randstad GBS Learning Hub</a>
+                <a href="index.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">← Back to Success Stories</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 max-w-2xl">
+        <h1 class="google-sans text-3xl font-bold text-gray-900 mb-4 text-center">Share Your AI Success Story</h1>
+        <p class="text-gray-600 mb-8 text-center">Tell us how AI helped you. Provide a title, describe the situation, and explain the impact.</p>
+
+        <form class="bg-white p-6 rounded-lg shadow-md space-y-4" action="#" method="post">
+            <div>
+                <label for="title" class="block font-semibold mb-2">Title</label>
+                <input id="title" name="title" type="text" class="w-full border border-gray-300 rounded p-2" required>
+            </div>
+            <div>
+                <label for="description" class="block font-semibold mb-2">Description</label>
+                <textarea id="description" name="description" rows="4" class="w-full border border-gray-300 rounded p-2" required></textarea>
+            </div>
+            <div>
+                <label for="impact" class="block font-semibold mb-2">Impact</label>
+                <textarea id="impact" name="impact" rows="3" class="w-full border border-gray-300 rounded p-2" required></textarea>
+            </div>
+
+            <p class="text-sm text-gray-600">Attach before and after artifacts (e.g., screenshots or documents) that show your improvement. You can upload files below or include links in your description.</p>
+
+            <div>
+                <label for="before" class="block font-semibold mb-2">Before Artifact</label>
+                <input id="before" name="before" type="file" class="w-full">
+            </div>
+            <div>
+                <label for="after" class="block font-semibold mb-2">After Artifact</label>
+                <input id="after" name="after" type="file" class="w-full">
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">Submit Story</button>
+        </form>
+    </main>
+
+</body>
+</html>
