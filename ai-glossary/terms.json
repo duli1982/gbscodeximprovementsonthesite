@@ -1,0 +1,21 @@
+{
+  "A": [
+    {"term": "Algorithm", "definition": "A set of rules or instructions a computer follows to solve a problem or complete a task."},
+    {"term": "Artificial Intelligence (AI)", "definition": "The field of creating systems that can perform tasks typically requiring human intelligence."}
+  ],
+  "B": [
+    {"term": "Bias", "definition": "Systematic errors that lead to unfair outcomes, often reflecting prejudices in training data."}
+  ],
+  "D": [
+    {"term": "Dataset", "definition": "A collection of data used to train or evaluate AI models."}
+  ],
+  "M": [
+    {"term": "Machine Learning (ML)", "definition": "A subset of AI that enables systems to learn from data and improve over time without being explicitly programmed."}
+  ],
+  "N": [
+    {"term": "Neural Network", "definition": "A network of algorithms modeled after the human brain, used to recognize patterns and solve complex problems."}
+  ],
+  "P": [
+    {"term": "Prompt", "definition": "A textual or structured input that guides an AI model to generate a specific output."}
+  ]
+}
