@@ -23,44 +23,47 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">Frequently Asked Questions</h1>
 
-        <div class="max-w-3xl mx-auto space-y-4">
-            <!-- General AI Usage -->
-            <details class="group border border-gray-200 rounded-lg bg-white p-6">
-                <summary class="flex justify-between items-center cursor-pointer">
-                    <span class="text-lg font-semibold">How should I use AI tools at Randstad GBS?</span>
-                    <span class="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div class="mt-4 text-gray-600">
-                    Use AI as a partner in your work by keeping sensitive data secure, validating outputs, and following Randstad's AI ethics and compliance guidelines.
-                </div>
-            </details>
-
-            <!-- Access Issues -->
-            <details class="group border border-gray-200 rounded-lg bg-white p-6">
-                <summary class="flex justify-between items-center cursor-pointer">
-                    <span class="text-lg font-semibold">What if I can't access an AI tool?</span>
-                    <span class="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div class="mt-4 text-gray-600">
-                    First, confirm your network connection and login credentials. If access remains blocked, submit a support ticket through the IT helpdesk.
-                </div>
-            </details>
-
-            <!-- Escalation Paths -->
-            <details class="group border border-gray-200 rounded-lg bg-white p-6">
-                <summary class="flex justify-between items-center cursor-pointer">
-                    <span class="text-lg font-semibold">How do I escalate AI-related issues or suggestions?</span>
-                    <span class="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div class="mt-4 text-gray-600">
-                    For unresolved issues or strategic suggestions, reach out to the GBS AI leadership team via the feedback form or your department's AI champion.
-                </div>
-            </details>
-        </div>
+        <div id="faq-container" class="max-w-3xl mx-auto space-y-4"></div>
     </main>
 
     <div id="footer-placeholder"></div>
         <script src="../shared/announcement.js" defer></script>
     <script src="../shared/scripts/footer.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('questions.json')
+                .then(res => res.json())
+                .then(questions => {
+                    const container = document.getElementById('faq-container');
+                    questions.forEach(({ question, answer }) => {
+                        const details = document.createElement('details');
+                        details.className = 'group border border-gray-200 rounded-lg bg-white p-6';
+
+                        const summary = document.createElement('summary');
+                        summary.className = 'flex justify-between items-center cursor-pointer';
+
+                        const qSpan = document.createElement('span');
+                        qSpan.className = 'text-lg font-semibold';
+                        qSpan.textContent = question;
+
+                        const arrow = document.createElement('span');
+                        arrow.className = 'text-blue-500 group-open:rotate-180 transition-transform';
+                        arrow.textContent = '▼';
+
+                        summary.appendChild(qSpan);
+                        summary.appendChild(arrow);
+
+                        const aDiv = document.createElement('div');
+                        aDiv.className = 'mt-4 text-gray-600';
+                        aDiv.textContent = answer;
+
+                        details.appendChild(summary);
+                        details.appendChild(aDiv);
+                        container.appendChild(details);
+                    });
+                })
+                .catch(err => console.error('Failed to load FAQ', err));
+        });
+    </script>
 </body>
 </html>
