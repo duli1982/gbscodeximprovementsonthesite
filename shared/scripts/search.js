@@ -10,7 +10,17 @@ async function buildSearchIndex() {
     { fetch: prefix + 'rpo-training/index.html', url: prefix + 'rpo-training/', category: 'training' },
     { fetch: prefix + 'gbs-ai-workshop/index.html', url: prefix + 'gbs-ai-workshop/', category: 'training' },
     { fetch: prefix + 'daily-focus/index.html', url: prefix + 'daily-focus/', category: 'training' },
-    { fetch: prefix + 'resources/index.html', url: prefix + 'resources/', category: 'resources' }
+    { fetch: prefix + 'sourcing-workshop/index.html', url: prefix + 'sourcing-workshop/', category: 'training' },
+    { fetch: prefix + 'resources/index.html', url: prefix + 'resources/', category: 'resources' },
+    { fetch: prefix + 'gbs-prompts/index.html', url: prefix + 'gbs-prompts/', category: 'content' },
+    { fetch: prefix + 'ai-ethics/index.html', url: prefix + 'ai-ethics/', category: 'content' },
+    { fetch: prefix + 'ai-glossary/index.html', url: prefix + 'ai-glossary/', category: 'content' },
+    { fetch: prefix + 'faq/index.html', url: prefix + 'faq/', category: 'content' },
+    { fetch: prefix + 'ai-sme/index.html', url: prefix + 'ai-sme/', category: 'content' },
+    { fetch: prefix + 'use-cases/index.html', url: prefix + 'use-cases/', category: 'content' },
+    { fetch: prefix + 'knowledge-content/index.html', url: prefix + 'knowledge-content/', category: 'content' },
+    { fetch: prefix + 'events/index.html', url: prefix + 'events/', category: 'content' },
+    { fetch: prefix + 'about-us/index.html', url: prefix + 'about-us/', category: 'content' }
   ];
 
   const docs = [];
@@ -62,8 +72,23 @@ function renderSearchResults(results, container, prefix='') {
     groups[doc.category].push(doc);
   });
 
-  ['training', 'prompts', 'resources'].forEach(cat => {
+  const order = ['training', 'content', 'prompts', 'resources'];
+  order.forEach(cat => {
     if (groups[cat]) {
+      const section = document.createElement('div');
+      section.innerHTML = `<h3 class="font-semibold mt-2 capitalize">${cat}</h3>`;
+      const ul = document.createElement('ul');
+      groups[cat].forEach(doc => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${doc.url}" class="block py-1 text-blue-600 hover:underline"><span class="font-medium">${doc.title}</span><span class="block text-gray-600 text-sm">${doc.description}</span></a>`;
+        ul.appendChild(li);
+      });
+      section.appendChild(ul);
+      container.appendChild(section);
+    }
+  });
+  Object.keys(groups).forEach(cat => {
+    if (!order.includes(cat)) {
       const section = document.createElement('div');
       section.innerHTML = `<h3 class="font-semibold mt-2 capitalize">${cat}</h3>`;
       const ul = document.createElement('ul');
