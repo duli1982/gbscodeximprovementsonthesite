@@ -9,34 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../shared/ai-sme-colors.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-primary': 'var(--ai-accent)',
-                        'brand-primary-hover': 'var(--ai-accent-hover)',
-                        'brand-dark': 'var(--ai-heading)',
-                        'brand-body': 'var(--ai-text)',
-                        'brand-muted': 'var(--ai-text)', // Using main text color for muted as well for simplicity
-                        'brand-bg': 'var(--ai-bg)',
-                        'brand-card-bg': 'var(--ai-card)',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="../shared/scripts/theme.js"></script>
     <style>
         body {
             background-color: var(--ai-bg);
             color: var(--ai-text);
-        }
-        .nav-link.active {
-            color: var(--ai-accent);
-            font-weight: 600;
         }
         .section-title {
             font-size: 2.25rem;
@@ -102,36 +79,7 @@
 
     <a href="../index.html" class="hub-button">Back To Hub</a>
 
-    <!-- Header & Navigation -->
-    <header id="header" class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 shadow-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-brand-dark flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-brand-primary"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-                AI Horizon
-            </a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link text-brand-body hover:text-brand-primary transition-colors duration-300">Home</a>
-                <a href="#get-started" class="nav-link text-brand-body hover:text-brand-primary transition-colors duration-300">Get Started</a>
-                <a href="#learning-hub" class="nav-link text-brand-body hover:text-brand-primary transition-colors duration-300">Learning Hub</a>
-                <a href="#ai-tools" class="nav-link text-brand-body hover:text-brand-primary transition-colors duration-300">AI Tools</a>
-                <a href="#community" class="nav-link text-brand-body hover:text-brand-primary transition-colors duration-300">Community</a>
-            </nav>
-             <a href="#community" class="hidden md:inline-block btn btn-primary">Get Help</a>
-            <button id="mobile-menu-button" class="md:hidden text-brand-dark">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
-            <a href="#home" class="block py-2 text-brand-body hover:text-brand-primary">Home</a>
-            <a href="#get-started" class="block py-2 text-brand-body hover:text-brand-primary">Get Started</a>
-            <a href="#learning-hub" class="block py-2 text-brand-body hover:text-brand-primary">Learning Hub</a>
-            <a href="#ai-tools" class="block py-2 text-brand-body hover:text-brand-primary">AI Tools</a>
-            <a href="#community" class="block py-2 text-brand-body hover:text-brand-primary">Community</a>
-            <a href="#community" class="block mt-2 btn btn-primary w-full">Get Help</a>
-        </div>
-    </header>
-
+    <div id="nav-placeholder"></div>
     <main class="container mx-auto px-6 py-12 md:py-20">
 
         <!-- Home Section -->
@@ -328,16 +276,10 @@
     <div id="footer-placeholder"></div>
         <script src="../shared/announcement.js" defer></script>
     <script src="../shared/scripts/footer.js" defer></script>
+    <script src="../shared/scripts/navigation.js" defer></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
             // Accordion functionality
             const accordionToggles = document.querySelectorAll('.accordion-toggle');
             accordionToggles.forEach(toggle => {
@@ -375,27 +317,6 @@
                         content.classList.add('hidden');
                     });
                     document.getElementById(btn.dataset.tab).classList.remove('hidden');
-                });
-            });
-
-            // Active nav link highlighting on scroll
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 100) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
                 });
             });
         });
