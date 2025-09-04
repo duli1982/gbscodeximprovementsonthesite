@@ -789,6 +789,77 @@
           </div>`;
         }
 
+        // ===== Feedback Helpers =====
+        const QUICK_FEEDBACK_CONFIG = {
+            formAction: 'YOUR_GOOGLE_FORM_ACTION_URL', // replace with actual Google Form action URL
+            commentEntry: 'MESSAGE_ENTRY_ID', // replace with actual entry ID for comment field
+            promptEntry: 'PROMPT_TITLE_ENTRY_ID', // optional: entry ID to capture prompt title
+            typeEntry: 'FEEDBACK_TYPE_ENTRY_ID',
+            sectionEntry: 'RELATED_SECTION_ENTRY_ID'
+        };
+
+        function getFeedbackData() {
+            return JSON.parse(localStorage.getItem('promptFeedback') || '{}');
+        }
+
+        function saveFeedbackData(data) {
+            localStorage.setItem('promptFeedback', JSON.stringify(data));
+        }
+
+        function getUserVotes() {
+            return JSON.parse(localStorage.getItem('promptVotes') || '{}');
+        }
+
+        function saveUserVotes(data) {
+            localStorage.setItem('promptVotes', JSON.stringify(data));
+        }
+
+        function getFeedbackCounts(id) {
+            const data = getFeedbackData();
+            return data[id] || { up: 0, down: 0 };
+        }
+
+        function handleVote(id, type) {
+            const data = getFeedbackData();
+            const votes = getUserVotes();
+            const counts = data[id] || { up: 0, down: 0 };
+            const previous = votes[id];
+
+            if (previous === type) {
+                counts[type] = Math.max(0, counts[type] - 1);
+                delete votes[id];
+            } else {
+                if (previous) {
+                    counts[previous] = Math.max(0, counts[previous] - 1);
+                }
+                counts[type] += 1;
+                votes[id] = type;
+            }
+
+            data[id] = counts;
+            saveFeedbackData(data);
+            saveUserVotes(votes);
+        }
+
+        function sendQuickComment(prompt, comment) {
+            if (!QUICK_FEEDBACK_CONFIG.formAction || QUICK_FEEDBACK_CONFIG.formAction.includes('YOUR_GOOGLE_FORM')) {
+                console.warn('Feedback form not configured.');
+                return;
+            }
+
+            const formData = new FormData();
+            if (QUICK_FEEDBACK_CONFIG.typeEntry) formData.append(QUICK_FEEDBACK_CONFIG.typeEntry, 'Prompt Feedback');
+            if (QUICK_FEEDBACK_CONFIG.sectionEntry) formData.append(QUICK_FEEDBACK_CONFIG.sectionEntry, 'GBS Prompt Library');
+            if (QUICK_FEEDBACK_CONFIG.promptEntry) formData.append(QUICK_FEEDBACK_CONFIG.promptEntry, prompt.title || prompt.id);
+            if (QUICK_FEEDBACK_CONFIG.commentEntry) formData.append(QUICK_FEEDBACK_CONFIG.commentEntry, comment);
+
+            fetch(QUICK_FEEDBACK_CONFIG.formAction, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).catch(err => console.error('Quick feedback failed', err));
+        }
+
         // --- RENDER FUNCTIONS ---
         function renderHomepage() {
             categoryCardsContainer.innerHTML = '';
@@ -857,6 +928,20 @@
             const quickStartSection = createQuickStartSection(prompt.quickStart || {});
             const expectedOutputSection = createExpectedOutputSection(prompt.expectedOutput || '');
 
+            const feedbackSection = `
+                <div class="mt-4 feedback-section" data-prompt-id="${prompt.id}" data-prompt-title="${prompt.title}">
+                    <div class="flex items-center space-x-2 text-xl">
+                        <button class="thumb-up">👍</button>
+                        <span class="up-count text-sm">0</span>
+                        <button class="thumb-down ml-4">👎</button>
+                        <span class="down-count text-sm">0</span>
+                    </div>
+                    <div class="mt-2 flex gap-2">
+                        <input type="text" class="quick-comment flex-1 border rounded px-2 py-1 text-sm" placeholder="Quick comment (optional)">
+                        <button class="submit-comment px-3 py-1 bg-blue-500 text-white rounded text-sm">Send</button>
+                    </div>
+                </div>`;
+
             promptEl.className = isSearchResult ? 'prompt-block p-4' : 'mb-8';
 
             promptEl.innerHTML = `
@@ -887,7 +972,38 @@
 
                 ${quickStartSection}
                 ${expectedOutputSection}
+                ${feedbackSection}
             `;
+
+            const feedbackEl = promptEl.querySelector('.feedback-section');
+            const upBtn = feedbackEl.querySelector('.thumb-up');
+            const downBtn = feedbackEl.querySelector('.thumb-down');
+            const upCountEl = feedbackEl.querySelector('.up-count');
+            const downCountEl = feedbackEl.querySelector('.down-count');
+            const commentInput = feedbackEl.querySelector('.quick-comment');
+            const submitBtn = feedbackEl.querySelector('.submit-comment');
+
+            function updateFeedbackUI() {
+                const counts = getFeedbackCounts(prompt.id);
+                const votes = getUserVotes();
+                upCountEl.textContent = counts.up;
+                downCountEl.textContent = counts.down;
+                upBtn.classList.toggle('text-green-600', votes[prompt.id] === 'up');
+                downBtn.classList.toggle('text-red-600', votes[prompt.id] === 'down');
+            }
+
+            upBtn.addEventListener('click', () => { handleVote(prompt.id, 'up'); updateFeedbackUI(); });
+            downBtn.addEventListener('click', () => { handleVote(prompt.id, 'down'); updateFeedbackUI(); });
+            submitBtn.addEventListener('click', () => {
+                const comment = commentInput.value.trim();
+                if (!comment) return;
+                sendQuickComment(prompt, comment);
+                commentInput.value = '';
+                submitBtn.textContent = 'Sent!';
+                setTimeout(() => { submitBtn.textContent = 'Send'; }, 2000);
+            });
+
+            updateFeedbackUI();
 
             return promptEl;
         }
