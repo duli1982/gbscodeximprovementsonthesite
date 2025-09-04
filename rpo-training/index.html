@@ -44,124 +44,10 @@
 
             <div class="content-section">
                 <h3 class="google-sans text-3xl font-bold text-center">Role-Specific Tracks</h3>
-                <div class="mt-8 grid md:grid-cols-3 gap-6">
-                    <a href="recruiter/index.html" class="module-card text-center">
-                        <p class="text-sm font-semibold text-blue-600">RECRUITER</p>
-                        <h4 class="google-sans text-xl font-bold mt-2">Recruiter Track</h4>
-                        <p class="mt-2 text-gray-600">Candidate outreach and interview tools.</p>
-                    </a>
-                    <a href="sourcer/index.html" class="module-card text-center">
-                        <p class="text-sm font-semibold text-blue-600">SOURCER</p>
-                        <h4 class="google-sans text-xl font-bold mt-2">Sourcer Track</h4>
-                        <p class="mt-2 text-gray-600">Talent discovery and pipeline skills.</p>
-                    </a>
-                    <a href="manager/index.html" class="module-card text-center">
-                        <p class="text-sm font-semibold text-blue-600">MANAGER</p>
-                        <h4 class="google-sans text-xl font-bold mt-2">Manager Track</h4>
-                        <p class="mt-2 text-gray-600">Team leadership and AI governance.</p>
-                    </a>
-                </div>
+                <div id="tracks-container" class="mt-8 grid md:grid-cols-3 gap-6"></div>
             </div>
 
-            <!-- Phase 1 Section -->
-            <section class="phase-section">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <span class="google-sans text-sm font-bold text-blue-600">PHASE 1: MANDATORY</span>
-                        <h3 class="google-sans text-3xl font-bold mt-2">AI Foundations</h3>
-                        <p class="mt-4 text-gray-600">This foundational phase is designed for all team members. In just
-                            two weeks, everyone will become comfortable and proficient with using AI for their core
-                            daily tasks, from writing emails to sourcing candidates.</p>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="https://placehold.co/600x400/e8f0fe/1967d2?text=Phase+1:%0AFoundations"
-                            alt="Phase 1: Foundations" class="rounded-lg shadow-md">
-                    </div>
-                </div>
-                <div class="mt-8 grid md:grid-cols-2 gap-6">
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-1')">
-                        <p class="text-sm font-semibold text-blue-600">MODULE 1</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Prompting &amp; Writing — The C.R.E.A.T.E.
-                            Framework</h3>
-                        <p class="mt-2 text-gray-600">Learn the C.R.E.A.T.E. framework — a structured approach
-                            (Character, Request, Examples, Additions, Type, Extras) for crafting precise, repeatable,
-                            high-quality prompts.</p>
-                    </button>
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-2')">
-                        <p class="text-sm font-semibold text-blue-600">MODULE 2</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Sourcing & Research</h3>
-                        <p class="mt-2 text-gray-600">Generate complex Boolean strings and perform rapid market
-                            analysis.</p>
-                    </button>
-                </div>
-            </section>
-
-            <!-- Phase 2 Section -->
-            <section class="phase-section border-t border-gray-200">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div class="flex justify-center md:order-2">
-                        <img src="https://placehold.co/600x400/e6f4ea/1e8e3e?text=Phase+2:%0AChampions"
-                            alt="Phase 2: AI Champions" class="rounded-lg shadow-md">
-                    </div>
-                    <div class="md:order-1">
-                        <span class="google-sans text-sm font-bold text-green-600">PHASE 2: OPTIONAL</span>
-                        <h3 class="google-sans text-3xl font-bold mt-2">The AI Champions Track</h3>
-                        <p class="mt-4 text-gray-600">This track is for team members who want to go deeper. Champions
-                            will learn advanced skills like data analysis, workflow automation, and how to build custom
-                            AI tools, positioning them as mentors and subject matter experts.</p>
-                    </div>
-                </div>
-                <div class="mt-8 grid md:grid-cols-3 gap-6">
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-3')">
-                        <p class="text-sm font-semibold text-green-600">MODULE 3</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Data & Knowledge</h3>
-                        <p class="mt-2 text-gray-600">Analyze data in Sheets and build a "CV Bot" to search documents.
-                        </p>
-                    </button>
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-4')">
-                        <p class="text-sm font-semibold text-green-600">MODULE 4</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Automation</h3>
-                        <p class="mt-2 text-gray-600">Build hands-free workflows that connect Gmail, AI, and Sheets.</p>
-                    </button>
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-5')">
-                        <p class="text-sm font-semibold text-green-600">MODULE 5</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Train the Trainer</h3>
-                        <p class="mt-2 text-gray-600">Learn to mentor colleagues and present your projects to
-                            leadership.</p>
-                    </button>
-                </div>
-            </section>
-
-            <!-- Phase 3 Section -->
-            <section class="phase-section border-t border-gray-200">
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <span class="google-sans text-sm font-bold text-purple-600">PHASE 3: LEADERSHIP</span>
-                        <h3 class="google-sans text-3xl font-bold mt-2">AI for RPO Strategists</h3>
-                        <p class="mt-4 text-gray-600">This executive stream is for Department Heads and Team Leads. The
-                            focus shifts from hands-on skills to strategic planning, governance, and measuring the
-                            business value and ROI of AI initiatives.</p>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="https://placehold.co/600x400/f3e8fd/8e24aa?text=Phase+3:%0ALeadership"
-                            alt="Phase 3: Leadership" class="rounded-lg shadow-md">
-                    </div>
-                </div>
-                <div class="mt-8 grid md:grid-cols-2 gap-6">
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-6')">
-                        <p class="text-sm font-semibold text-purple-600">MODULE 6</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Strategy & Governance</h3>
-                        <p class="mt-2 text-gray-600">Develop an RPO-specific AI roadmap and prioritize high-impact
-                            projects.</p>
-                    </button>
-                    <button type="button" class="module-card text-left" onclick="navigateTo('module-7')">
-                        <p class="text-sm font-semibold text-purple-600">MODULE 7</p>
-                        <h3 class="google-sans text-xl font-bold mt-2">Measuring Impact</h3>
-                        <p class="mt-2 text-gray-600">Define success metrics and build a compelling business case for AI
-                            projects.</p>
-                    </button>
-                </div>
-            </section>
+            <div id="phases-container"></div>
 
             <!-- Quiz Section -->
             <section id="quiz-section" class="phase-section border-t border-gray-200 mt-12">
@@ -211,6 +97,7 @@
     <script src="../shared/scripts/footer.js" defer></script>
 
     <script src="js/app.js"></script>
+    <script src="js/curriculum.js"></script>
 
 </body>
 

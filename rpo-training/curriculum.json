@@ -1,0 +1,89 @@
+{
+  "tracks": [
+    {
+      "label": "RECRUITER",
+      "title": "Recruiter Track",
+      "description": "Candidate outreach and interview tools.",
+      "link": "recruiter/index.html"
+    },
+    {
+      "label": "SOURCER",
+      "title": "Sourcer Track",
+      "description": "Talent discovery and pipeline skills.",
+      "link": "sourcer/index.html"
+    },
+    {
+      "label": "MANAGER",
+      "title": "Manager Track",
+      "description": "Team leadership and AI governance.",
+      "link": "manager/index.html"
+    }
+  ],
+  "phases": [
+    {
+      "label": "PHASE 1: MANDATORY",
+      "color": "blue",
+      "title": "AI Foundations",
+      "description": "This foundational phase is designed for all team members. In just two weeks, everyone will become comfortable and proficient with using AI for their core daily tasks, from writing emails to sourcing candidates.",
+      "image": "https://placehold.co/600x400/e8f0fe/1967d2?text=Phase+1:%0AFoundations",
+      "imageFirst": false,
+      "modules": [
+        {
+          "id": "module-1",
+          "title": "Prompting & Writing — The C.R.E.A.T.E. Framework",
+          "description": "Learn the C.R.E.A.T.E. framework — a structured approach (Character, Request, Examples, Additions, Type, Extras) for crafting precise, repeatable, high-quality prompts."
+        },
+        {
+          "id": "module-2",
+          "title": "Sourcing & Research",
+          "description": "Generate complex Boolean strings and perform rapid market analysis."
+        }
+      ]
+    },
+    {
+      "label": "PHASE 2: OPTIONAL",
+      "color": "green",
+      "title": "The AI Champions Track",
+      "description": "This track is for team members who want to go deeper. Champions will learn advanced skills like data analysis, workflow automation, and how to build custom AI tools, positioning them as mentors and subject matter experts.",
+      "image": "https://placehold.co/600x400/e6f4ea/1e8e3e?text=Phase+2:%0AChampions",
+      "imageFirst": true,
+      "modules": [
+        {
+          "id": "module-3",
+          "title": "Data & Knowledge",
+          "description": "Analyze data in Sheets and build a \"CV Bot\" to search documents."
+        },
+        {
+          "id": "module-4",
+          "title": "Automation",
+          "description": "Build hands-free workflows that connect Gmail, AI, and Sheets."
+        },
+        {
+          "id": "module-5",
+          "title": "Train the Trainer",
+          "description": "Learn to mentor colleagues and present your projects to leadership."
+        }
+      ]
+    },
+    {
+      "label": "PHASE 3: LEADERSHIP",
+      "color": "purple",
+      "title": "AI for RPO Strategists",
+      "description": "This executive stream is for Department Heads and Team Leads. The focus shifts from hands-on skills to strategic planning, governance, and measuring the business value and ROI of AI initiatives.",
+      "image": "https://placehold.co/600x400/f3e8fd/8e24aa?text=Phase+3:%0ALeadership",
+      "imageFirst": false,
+      "modules": [
+        {
+          "id": "module-6",
+          "title": "Strategy & Governance",
+          "description": "Develop an RPO-specific AI roadmap and prioritize high-impact projects."
+        },
+        {
+          "id": "module-7",
+          "title": "Measuring Impact",
+          "description": "Define success metrics and build a compelling business case for AI projects."
+        }
+      ]
+    }
+  ]
+}
