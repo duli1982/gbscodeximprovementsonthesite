@@ -189,4 +189,40 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial check on page load
     toggleBackToTopButton();
+
+    // --- Quiz Logic ---
+    const quizForm = document.getElementById('rpo-quiz-form');
+    if (quizForm) {
+        quizForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(quizForm);
+            const answers = {
+                q1: data.get('q1'),
+                q2: data.get('q2')
+            };
+            let score = 0;
+            const explanations = [];
+            if (answers.q1 === 'b') {
+                score++;
+                explanations.push('Q1 correct! The C.R.E.A.T.E. framework guides effective prompt writing.');
+            } else {
+                explanations.push('Q1 incorrect. The C.R.E.A.T.E. framework is used for prompt writing.');
+            }
+            if (answers.q2 === 'c') {
+                score++;
+                explanations.push('Q2 correct! Phase 3 focuses on strategic planning.');
+            } else {
+                explanations.push('Q2 incorrect. Phase 3 is the strategic planning phase.');
+            }
+            localStorage.setItem('rpoTrainingQuiz', JSON.stringify({ answers, score, date: new Date().toISOString() }));
+            const feedbackEl = document.getElementById('rpo-quiz-feedback');
+            feedbackEl.innerHTML = `<p class="font-semibold">You scored ${score}/2.</p><ul class="list-disc list-inside mt-2">${explanations.map(e => `<li>${e}</li>`).join('')}</ul>`;
+            const certLink = document.getElementById('rpo-download-cert');
+            const name = data.get('name') || 'Participant';
+            const certText = `Certificate of Completion\n${name}\nScore: ${score}/2`;
+            const blob = new Blob([certText], { type: 'text/plain' });
+            certLink.href = URL.createObjectURL(blob);
+            certLink.classList.remove('hidden');
+        });
+    }
 });

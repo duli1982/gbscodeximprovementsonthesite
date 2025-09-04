@@ -114,6 +114,7 @@
                         </div>
 
                         <a href="#now" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">The Now</a>
+                        <a href="#quiz" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700">Quiz</a>
                     </div>
                 </div>
             </div>
@@ -940,6 +941,35 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="quiz" class="page-section mb-16 md:mb-24 fade-in hidden">
+            <h2 class="text-3xl font-bold mb-4 text-center">Quick Quiz</h2>
+            <form id="gbs-quiz-form" class="space-y-6 max-w-xl mx-auto">
+                <div>
+                    <label class="block font-semibold mb-2">1. What is one benefit of integrating AI into workflows?</label>
+                    <div class="space-y-2">
+                        <label class="block"><input type="radio" name="q1" value="a" class="mr-2">More manual work</label>
+                        <label class="block"><input type="radio" name="q1" value="b" class="mr-2">Faster insights</label>
+                        <label class="block"><input type="radio" name="q1" value="c" class="mr-2">Higher costs</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-2">2. The framework encourages teams to:</label>
+                    <div class="space-y-2">
+                        <label class="block"><input type="radio" name="q2" value="a" class="mr-2">Avoid AI tools</label>
+                        <label class="block"><input type="radio" name="q2" value="b" class="mr-2">Build workflows around AI</label>
+                        <label class="block"><input type="radio" name="q2" value="c" class="mr-2">Rely solely on manual processes</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="gbs-name" class="block font-semibold mb-2">Your name (optional):</label>
+                    <input id="gbs-name" name="name" class="border p-2 w-full">
+                </div>
+                <button type="submit" class="bg-[#4A90E2] text-white px-4 py-2 rounded">Submit</button>
+            </form>
+            <div id="gbs-quiz-feedback" class="mt-6 text-center"></div>
+            <a id="gbs-download-cert" class="hidden mt-4 bg-green-600 text-white px-4 py-2 rounded inline-block" download="gbs-ai-workshop-certificate.txt">Download Certificate</a>
         </section>
 
         <section id="what" class="page-section mb-16 md:mb-24 fade-in hidden">

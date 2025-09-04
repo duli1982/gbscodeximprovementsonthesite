@@ -52,6 +52,7 @@ function main() {
   try {
     initComponents();
     initBackToTopButton();
+    initQuiz();
     // NOTE: Other page-specific logic (like charts, simulators, etc.)
     // will be progressively moved from the inline script to this file or other modules.
     console.log("GBS AI Workshop page scripts initialized successfully.");
@@ -62,3 +63,39 @@ function main() {
 
 // Run the main function when the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', main);
+
+function initQuiz() {
+  const form = qs('#gbs-quiz-form');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const answers = {
+      q1: data.get('q1'),
+      q2: data.get('q2')
+    };
+    let score = 0;
+    const feedback = [];
+    if (answers.q1 === 'b') {
+      score++;
+      feedback.push('Q1 correct! Integrating AI yields faster insights.');
+    } else {
+      feedback.push('Q1 incorrect. AI can provide faster insights.');
+    }
+    if (answers.q2 === 'b') {
+      score++;
+      feedback.push('Q2 correct! The framework advocates building workflows around AI.');
+    } else {
+      feedback.push('Q2 incorrect. The framework encourages building workflows around AI.');
+    }
+    localStorage.setItem('gbsWorkshopQuiz', JSON.stringify({ answers, score, date: new Date().toISOString() }));
+    const feedbackEl = qs('#gbs-quiz-feedback');
+    feedbackEl.innerHTML = `<p class="font-semibold">You scored ${score}/2.</p><ul class="list-disc list-inside mt-2">${feedback.map(f => `<li>${f}</li>`).join('')}</ul>`;
+    const certLink = qs('#gbs-download-cert');
+    const name = data.get('name') || 'Participant';
+    const certText = `Certificate of Completion\n${name}\nScore: ${score}/2`;
+    const blob = new Blob([certText], { type: 'text/plain' });
+    certLink.href = URL.createObjectURL(blob);
+    certLink.classList.remove('hidden');
+  });
+}
