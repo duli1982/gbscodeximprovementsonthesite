@@ -10,7 +10,17 @@ async function buildSearchIndex() {
     { fetch: prefix + 'rpo-training/index.html', url: prefix + 'rpo-training/', category: 'training' },
     { fetch: prefix + 'gbs-ai-workshop/index.html', url: prefix + 'gbs-ai-workshop/', category: 'training' },
     { fetch: prefix + 'daily-focus/index.html', url: prefix + 'daily-focus/', category: 'training' },
-    { fetch: prefix + 'resources/index.html', url: prefix + 'resources/', category: 'resources' }
+    { fetch: prefix + 'sourcing-workshop/index.html', url: prefix + 'sourcing-workshop/', category: 'training' },
+    { fetch: prefix + 'resources/index.html', url: prefix + 'resources/', category: 'resources' },
+    { fetch: prefix + 'gbs-prompts/index.html', url: prefix + 'gbs-prompts/', category: 'prompts' },
+    { fetch: prefix + 'ai-ethics/index.html', url: prefix + 'ai-ethics/', category: 'content' },
+    { fetch: prefix + 'ai-glossary/index.html', url: prefix + 'ai-glossary/', category: 'content' },
+    { fetch: prefix + 'faq/index.html', url: prefix + 'faq/', category: 'content' },
+    { fetch: prefix + 'ai-sme/index.html', url: prefix + 'ai-sme/', category: 'content' },
+    { fetch: prefix + 'use-cases/index.html', url: prefix + 'use-cases/', category: 'content' },
+    { fetch: prefix + 'knowledge-content/index.html', url: prefix + 'knowledge-content/', category: 'content' },
+    { fetch: prefix + 'events/index.html', url: prefix + 'events/', category: 'content' },
+    { fetch: prefix + 'about-us/index.html', url: prefix + 'about-us/', category: 'content' }
   ];
 
   const docs = [];
@@ -52,31 +62,85 @@ async function buildSearchIndex() {
   });
 }
 
-function renderSearchResults(results, container, prefix='') {
+const popularSearches = [
+  { label: 'All Training', query: 'training' },
+  { label: 'Prompts', query: 'prompt' },
+  { label: 'Resources', query: 'resource' },
+  { label: 'Success Stories', query: 'success' }
+];
+
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlight(text, query) {
+  if (!query) return text;
+  const regex = new RegExp(escapeRegExp(query), 'gi');
+  return text.replace(regex, '<mark>$&</mark>');
+}
+
+function formatCategory(cat) {
+  switch (cat) {
+    case 'prompts':
+      return 'Prompt Library';
+    case 'training':
+      return 'Training';
+    case 'resources':
+      return 'Resources';
+    case 'content':
+      return 'Content';
+    default:
+      return cat;
+  }
+}
+
+function renderSearchResults(results, container, query='') {
   container.innerHTML = '';
-  const groups = {};
+
+  const suggestions = document.createElement('div');
+  suggestions.className = 'px-4 py-2 border-b';
+  suggestions.innerHTML = '<p class="text-xs text-gray-500 font-medium">POPULAR SEARCHES</p>';
+  const tagWrap = document.createElement('div');
+  tagWrap.className = 'mt-1 flex flex-wrap gap-2';
+  popularSearches.forEach(s => {
+    const tag = document.createElement('button');
+    tag.type = 'button';
+    tag.className = 'bg-gray-100 text-gray-700 rounded-full px-2 py-1 text-xs';
+    tag.textContent = s.label;
+    tag.addEventListener('click', () => {
+      const input = document.querySelector('[data-search-input]');
+      if (input) {
+        input.value = s.query;
+        input.dispatchEvent(new Event('input'));
+        input.focus();
+      }
+    });
+    tagWrap.appendChild(tag);
+  });
+  suggestions.appendChild(tagWrap);
+  container.appendChild(suggestions);
+
+  if (results.length === 0) {
+    container.classList.remove('hidden');
+    return;
+  }
+
+  const ul = document.createElement('ul');
   results.forEach(r => {
     const doc = searchDocs.find(d => d.id === r.ref);
     if (!doc) return;
-    groups[doc.category] = groups[doc.category] || [];
-    groups[doc.category].push(doc);
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <a href="${doc.url}" class="block py-2 px-4 hover:bg-gray-50">
+        <span class="block font-medium">${highlight(doc.title, query)}</span>
+        <span class="block text-gray-600 text-sm">${highlight(doc.description, query)}</span>
+        <span class="inline-block mt-1 px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs">${formatCategory(doc.category)}</span>
+      </a>
+    `;
+    ul.appendChild(li);
   });
-
-  ['training', 'prompts', 'resources'].forEach(cat => {
-    if (groups[cat]) {
-      const section = document.createElement('div');
-      section.innerHTML = `<h3 class="font-semibold mt-2 capitalize">${cat}</h3>`;
-      const ul = document.createElement('ul');
-      groups[cat].forEach(doc => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${doc.url}" class="block py-1 text-blue-600 hover:underline"><span class="font-medium">${doc.title}</span><span class="block text-gray-600 text-sm">${doc.description}</span></a>`;
-        ul.appendChild(li);
-      });
-      section.appendChild(ul);
-      container.appendChild(section);
-    }
-  });
-  container.classList.toggle('hidden', results.length === 0);
+  container.appendChild(ul);
+  container.classList.remove('hidden');
 }
 
 async function handleSearchInput(e) {
@@ -91,7 +155,7 @@ async function handleSearchInput(e) {
     return;
   }
   const results = searchIndex.search(query);
-  renderSearchResults(results, container);
+  renderSearchResults(results, container, query);
 }
 
 function setupSearch() {
