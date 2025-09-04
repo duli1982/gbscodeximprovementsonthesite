@@ -1,9 +1,31 @@
 .back-to-hub-btn {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background-color: #2C5282; /* Randstad Blue */
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px; /* rounded-full */
-        }
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #2C5282; /* Randstad Blue */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* rounded-full */
+}
+
+.google-sans {
+    font-family: 'Google Sans', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.hub-card {
+    border: 1px solid #dadce0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.07), 0 3px 6px rgba(0,0,0,0.05);
+}
+
+.hub-card h3 {
+    color: #1967d2; /* Google Blue */
+}
