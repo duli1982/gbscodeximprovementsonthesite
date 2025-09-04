@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Randstad GBS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared/hub-button.css" />
+  <link rel="stylesheet" href="../shared/announcement.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <div id="nav-placeholder"></div>
+
+  <main class="container mx-auto px-4 py-12 md:py-20">
+    <header class="text-center mb-12">
+      <h1 class="google-sans text-4xl md:text-5xl font-bold text-gray-900">Your Dashboard</h1>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Select your role to view relevant sections.</p>
+    </header>
+
+    <section id="role-selection" class="text-center mb-12">
+      <label for="role-selector" class="mr-4 font-medium">Choose your role:</label>
+      <select id="role-selector" class="border border-gray-300 rounded-md px-4 py-2">
+        <option value="">--Select Role--</option>
+        <option value="rpo">RPO</option>
+        <option value="msp">MSP</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button id="save-role" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-md">Go</button>
+    </section>
+
+    <div id="dashboard-sections" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"></div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="../shared/announcement.js" defer></script>
+  <script src="../shared/scripts/navigation.js" defer></script>
+  <script src="../shared/scripts/footer.js" defer></script>
+  <script src="../shared/scripts/dashboard.js" defer></script>
+</body>
+</html>
