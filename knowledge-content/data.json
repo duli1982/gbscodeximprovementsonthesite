@@ -1,0 +1,77 @@
+{
+  "trainingVideos": [
+    {
+      "title": "Schedule Action With Gemini",
+      "duration": "1:10",
+      "src": "https://drive.google.com/file/d/1Kc2V6UCrV9K5w9ziziRsAwP6xJTKyfB4/preview"
+    },
+    {
+      "title": "Start With Google Flows Using Gemini",
+      "duration": "3:08",
+      "src": "https://drive.google.com/file/d/1gjiWFxBg08WymUPNH2sRq6S9gk5xloLE/preview"
+    },
+    {
+      "title": "Start using Gemini and general prompting",
+      "duration": "7:20",
+      "src": "https://drive.google.com/file/d/1mfJbDJcXYyEQuZHm4CYMVuZrhKbGsbEo/preview"
+    },
+    {
+      "title": "Using Gemini App",
+      "duration": "9:40",
+      "src": "https://drive.google.com/file/d/1TKwELbbQBWF8Famt6fbAUQma6POdw2Yz/preview"
+    },
+    {
+      "title": "Gemini in Gmail and Google Chat",
+      "duration": "8:00",
+      "src": "https://drive.google.com/file/d/10H_fL0bKVsB-cObFUD5ObETnWJdEMMNY/preview"
+    },
+    {
+      "title": "Gemini in Google Docs",
+      "duration": "6:41",
+      "src": "https://drive.google.com/file/d/1pz_vjiJtunaRGHt0BloQEZVkM_g6zFmk/preview"
+    },
+    {
+      "title": "Gemini in Google Sheets",
+      "duration": "5:30",
+      "src": "https://drive.google.com/file/d/1CQglvTtEdKphRetUT2WHJ8p2K1XHY4DX/preview"
+    },
+    {
+      "title": "Gemini in Google Drive",
+      "duration": "7:07",
+      "src": "https://drive.google.com/file/d/1FDDA532EYydnecDmxbM7w49_w5vmSkOJ/preview"
+    },
+    {
+      "title": "NotebookLM Plus",
+      "duration": "6:43",
+      "src": "https://drive.google.com/file/d/1_7rdXgRGveGDPImEZfAbZh3DL-pTUl1Y/preview"
+    },
+    {
+      "title": "Convert RandstadGPT Genies to Gemini Gems",
+      "duration": "0:51",
+      "src": "https://drive.google.com/file/d/1iUCn1lbI4-evB_GvkVWK9QU2Wz_A16IM/preview"
+    }
+  ],
+  "rolePrompts": [
+    {
+      "title": "Prompts & Use Cases",
+      "links": [
+        {
+          "label": "Use Google Gemini for sales",
+          "url": "https://support.google.com/a/users/answer/14190391"
+        },
+        {
+          "label": "Use Google Gemini for marketing",
+          "url": "https://support.google.com/a/users/answer/14196644"
+        },
+        {
+          "label": "Use Google Gemini for human resources",
+          "url": "https://support.google.com/a/users/answer/14171678"
+        },
+        {
+          "label": "Use Google Gemini for nonprofits",
+          "url": "https://support.google.com/a/users/answer/14571258"
+        }
+      ]
+    }
+  ]
+}
