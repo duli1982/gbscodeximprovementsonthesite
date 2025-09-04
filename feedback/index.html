@@ -54,15 +54,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-200">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <a href="/" class="google-sans text-xl font-bold text-gray-900">Randstad GBS Learning Hub</a>
-                <a href="/" class="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">← Back to
-                    Hub</a>
-            </div>
-        </div>
-    </nav>
+    <div id="nav-placeholder"></div>
 
     <div class="container mx-auto px-4 py-12">
 
@@ -77,7 +69,7 @@
                 <!-- Hidden iframe to handle form submission -->
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccessMessage();}"></iframe>
 
-                <form id="feedbackForm" class="space-y-6" action="YOUR_GOOGLE_FORM_ACTION_URL" method="POST" target="hidden_iframe">
+                <form id="feedbackForm" class="space-y-6" action="https://docs.google.com/forms/d/e/1FAIpQLSe3b6jwxKF1u9IiMaTZGi4Z0eK6Ff8g_LuwZQzQ_EimeISFYA/formResponse" method="POST" target="hidden_iframe">
 
                     <!-- Feedback Type -->
                     <div>
@@ -221,7 +213,8 @@
     </div>
 
     <div id="footer-placeholder"></div>
-        <script src="../shared/announcement.js" defer></script>
+    <script src="../shared/announcement.js" defer></script>
+    <script src="../shared/scripts/navigation.js" defer></script>
     <script src="../shared/scripts/footer.js" defer></script>
 
     <script>
