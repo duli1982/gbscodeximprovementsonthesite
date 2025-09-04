@@ -32,6 +32,11 @@ body {
             border-radius: 8px;
             padding: 1.5rem;
         }
+        .module-card {
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
         .session-card, .module-card {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: pointer;
@@ -65,7 +70,7 @@ body {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background-color: #4A90E2; /* Randstad Blue */
+            background-color: #2C5282; /* Randstad Blue */
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 9999px; /* rounded-full */

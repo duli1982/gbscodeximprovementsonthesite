@@ -9,8 +9,8 @@ body {
     border-bottom: 2px solid transparent;
 }
 .nav-link.active, .nav-link:hover {
-    border-bottom-color: #4A90E2;
-    color: #4A90E2;
+    border-bottom-color: #2C5282;
+    color: #2C5282;
 }
 .prompt-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -84,14 +84,14 @@ input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 20px;
     height: 20px;
-    background: #4A90E2;
+    background: #2C5282;
     cursor: pointer;
     border-radius: 50%;
 }
 input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    background: #4A90E2;
+    background: #2C5282;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -105,7 +105,7 @@ input[type="range"]::-moz-range-thumb {
 }
 .builder-select:focus, .builder-textarea:focus {
     outline: none;
-    border-color: #4A90E2;
+    border-color: #2C5282;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
 }
 .favorite-btn {
@@ -125,11 +125,11 @@ input[type="range"]::-moz-range-thumb {
     transition: all 0.2s ease-in-out;
 }
 .scenario-option:hover, .category-option:hover {
-    border-color: #4A90E2;
+    border-color: #2C5282;
     background-color: #eff6ff;
 }
 .scenario-option.selected {
-    border-color: #4A90E2;
+    border-color: #2C5282;
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5);
 }
 .scenario-option.correct {
@@ -165,7 +165,7 @@ input[type="range"]::-moz-range-thumb {
  }
 .resistance-item[open] summary {
     background-color: #eff6ff;
-    color: #4A90E2;
+    color: #2C5282;
 }
 .resistance-item .answer {
     padding: 1rem;
@@ -176,7 +176,7 @@ input[type="range"]::-moz-range-thumb {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border-left-color: #4A90E2;
+    border-left-color: #2C5282;
     animation: spin 1s ease infinite;
 }
 @keyframes spin {

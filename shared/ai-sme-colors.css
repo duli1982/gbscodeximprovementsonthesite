@@ -10,8 +10,8 @@
   --ai-card: #FFFFFF;         /* pure white */
   --ai-text: #4A4A4A;          /* dark gray */
   --ai-heading: #111827;      /* darker gray */
-  --ai-accent: #4A90E2;        /* blue */
-  --ai-accent-hover: #357ABD;  /* a slightly darker blue for hover states */
+  --ai-accent: #2C5282;        /* blue */
+  --ai-accent-hover: #1A365D;  /* a slightly darker blue for hover states */
 
   /* Border & Shadow */
   --ai-border: #E5E7EB;       /* light gray for borders */
