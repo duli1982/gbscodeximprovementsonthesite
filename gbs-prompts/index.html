@@ -497,6 +497,8 @@
             </div>
         </header>
 
+        <div id="featured-prompt" class="max-w-xl mx-auto mb-12"></div>
+
         <!-- Pro Tips Section -->
         <section class="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
             <div class="max-w-4xl mx-auto">
@@ -665,6 +667,31 @@
                 const data = await response.json();
                 promptData = data.promptData;
                 flattenPrompts();
+
+                const now = new Date();
+                const startOfYear = new Date(now.getFullYear(), 0, 0);
+                const diff = now - startOfYear;
+                const oneDay = 1000 * 60 * 60 * 24;
+                const dayOfYear = Math.floor(diff / oneDay);
+
+                let featuredPrompt = allPrompts[dayOfYear % allPrompts.length];
+                const lastSeenPromptId = localStorage.getItem('lastSeenPromptId');
+                if (featuredPrompt && lastSeenPromptId === featuredPrompt.id) {
+                    featuredPrompt = allPrompts[(dayOfYear + 1) % allPrompts.length];
+                }
+                if (featuredPrompt) {
+                    localStorage.setItem('lastSeenPromptId', featuredPrompt.id);
+                    const container = document.getElementById('featured-prompt');
+                    if (container) {
+                        container.innerHTML = `
+                            <div class="prompt-block p-6">
+                                <h2 class="text-2xl font-semibold mb-2">${featuredPrompt.title}</h2>
+                                <p class="text-gray-600 mb-4">${featuredPrompt.description || ''}</p>
+                                <a href="#" class="text-blue-600 hover:underline" onclick="openPrompt('${featuredPrompt.id}','${featuredPrompt.category}','${featuredPrompt.subcategory}')">View Prompt →</a>
+                            </div>`;
+                    }
+                }
+
                 renderHomepage(); // Initialize UI after data loads
 
                 const promptCount = allPrompts.length;
@@ -907,6 +934,7 @@
          */
         function createPromptElement(prompt, isSearchResult = false, searchTerm = '') {
             const promptEl = document.createElement('div');
+            promptEl.id = prompt.id;
             const escapedContent = (prompt.content || '').replace(/"/g, '&quot;');
 
             const titleClass = isSearchResult ? 'text-lg' : 'text-xl';
@@ -1143,6 +1171,16 @@
             detailView.classList.remove('hidden');
             detailView.classList.add('fade-in');
             window.scrollTo(0, 0);
+        }
+
+        function openPrompt(promptId, category, subcategory) {
+            showDetailView(category, subcategory);
+            setTimeout(() => {
+                const el = document.getElementById(promptId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 0);
         }
 
         function populateGemModal(content) {
