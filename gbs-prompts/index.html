@@ -495,6 +495,10 @@
                     </svg>
                 </button>
             </div>
+            <div class="mt-4 flex justify-center gap-4">
+                <button id="tab-all" class="px-4 py-2 rounded bg-indigo-600 text-white">All</button>
+                <button id="tab-favorites" class="px-4 py-2 rounded bg-gray-200 text-gray-700">Favorites</button>
+            </div>
         </header>
 
         <div id="featured-prompt" class="max-w-xl mx-auto mb-12"></div>
@@ -773,6 +777,9 @@
         const copyGemBtn = document.getElementById('copy-gem-btn');
         const generatedGemContainer = document.getElementById('generated-gem-container');
         const generatedGemTextarea = document.getElementById('generated-gem');
+        const tabAllBtn = document.getElementById('tab-all');
+        const tabFavoritesBtn = document.getElementById('tab-favorites');
+        let currentTab = 'all';
 
         // ===== Helpers for Quick Start, Expected Output, and badges =====
 
@@ -786,6 +793,33 @@
             if (!searchTerm || !text) return text;
             const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             return text.replace(regex, '<mark class="bg-yellow-200 px-1 rounded">$1</mark>');
+        }
+
+        function getFavoriteIds() {
+            try {
+                return JSON.parse(localStorage.getItem('favoritePromptIds')) || [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveFavoriteIds(ids) {
+            localStorage.setItem('favoritePromptIds', JSON.stringify(ids));
+        }
+
+        function toggleFavorite(id) {
+            const ids = getFavoriteIds();
+            const index = ids.indexOf(id);
+            if (index >= 0) {
+                ids.splice(index, 1);
+            } else {
+                ids.push(id);
+            }
+            saveFavoriteIds(ids);
+        }
+
+        function isFavorite(id) {
+            return getFavoriteIds().includes(id);
         }
 
         function createDifficultyBadge(difficulty) {
@@ -995,7 +1029,8 @@
                         </div>
                         <h3 class="${titleClass} font-semibold main-heading">${highlightedTitle}</h3>
                     </div>
-                    <div class="flex-shrink-0 ml-4">
+                    <div class="flex-shrink-0 ml-4 flex items-start">
+                        <button class="favorite-btn text-xl text-gray-300 mr-2" title="Toggle favorite">☆</button>
                         <button class="copy-btn text-sm py-1 px-3 rounded-md bg-indigo-100 text-indigo-700 hover:bg-indigo-200" data-prompt-content="${escapedContent}">
                             Copy
                         </button>
@@ -1016,6 +1051,21 @@
                 ${expectedOutputSection}
                 ${feedbackSection}
             `;
+
+            const favoriteBtn = promptEl.querySelector('.favorite-btn');
+            function updateFavoriteBtn() {
+                const fav = isFavorite(prompt.id);
+                favoriteBtn.textContent = fav ? '★' : '☆';
+                favoriteBtn.classList.toggle('text-yellow-400', fav);
+                favoriteBtn.classList.toggle('text-gray-300', !fav);
+            }
+            favoriteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFavorite(prompt.id);
+                updateFavoriteBtn();
+                if (currentTab === 'favorites') renderFavorites();
+            });
+            updateFavoriteBtn();
 
             const feedbackEl = promptEl.querySelector('.feedback-section');
             const upBtn = feedbackEl.querySelector('.thumb-up');
@@ -1162,6 +1212,20 @@
             renderQuickLinks(activeCategory, null);
         }
 
+        function renderFavorites() {
+            categoryCardsContainer.innerHTML = '';
+            categoryCardsContainer.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
+            const favorites = allPrompts.filter(p => isFavorite(p.id));
+            if (favorites.length === 0) {
+                categoryCardsContainer.innerHTML = `<p class="text-center col-span-full text-gray-500">No favorite prompts saved.</p>`;
+                return;
+            }
+            favorites.forEach(prompt => {
+                const promptEl = createPromptElement(prompt, true);
+                categoryCardsContainer.appendChild(promptEl);
+            });
+        }
+
         // --- NAVIGATION LOGIC ---
         function showDetailView(category, subCategory) {
             lastScrollPosition = window.scrollY;
@@ -1234,16 +1298,58 @@ function hideGemModal() {
         // --- EVENT LISTENERS ---
         homepageSearchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.trim().toLowerCase();
-            if (searchTerm === '') { renderHomepage(); clearSearchBtn.classList.add('hidden'); return; }
+            if (searchTerm === '') {
+                clearSearchBtn.classList.add('hidden');
+                if (currentTab === 'favorites') {
+                    renderFavorites();
+                } else {
+                    renderHomepage();
+                }
+                return;
+            }
             clearSearchBtn.classList.remove('hidden');
-            const filteredPrompts = allPrompts.filter(prompt => {
+            const source = currentTab === 'favorites'
+                ? allPrompts.filter(p => isFavorite(p.id))
+                : allPrompts;
+            const filteredPrompts = source.filter(prompt => {
                 const titleMatch = (prompt.title || '').toLowerCase().includes(searchTerm);
                 const contentMatch = (prompt.content || '').toLowerCase().includes(searchTerm);
                 return titleMatch || contentMatch;
             });
             renderSearchResults(filteredPrompts);
         });
-        clearSearchBtn.addEventListener('click', () => { homepageSearchInput.value = ''; clearSearchBtn.classList.add('hidden'); renderHomepage(); });
+        clearSearchBtn.addEventListener('click', () => {
+            homepageSearchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            if (currentTab === 'favorites') {
+                renderFavorites();
+            } else {
+                renderHomepage();
+            }
+        });
+
+        function setActiveTab(tab) {
+            currentTab = tab;
+            if (tab === 'favorites') {
+                tabFavoritesBtn.classList.add('bg-indigo-600', 'text-white');
+                tabFavoritesBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                tabAllBtn.classList.remove('bg-indigo-600', 'text-white');
+                tabAllBtn.classList.add('bg-gray-200', 'text-gray-700');
+                homepageSearchInput.value = '';
+                clearSearchBtn.classList.add('hidden');
+                renderFavorites();
+            } else {
+                tabAllBtn.classList.add('bg-indigo-600', 'text-white');
+                tabAllBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                tabFavoritesBtn.classList.remove('bg-indigo-600', 'text-white');
+                tabFavoritesBtn.classList.add('bg-gray-200', 'text-gray-700');
+                homepageSearchInput.value = '';
+                clearSearchBtn.classList.add('hidden');
+                renderHomepage();
+            }
+        }
+        tabAllBtn.addEventListener('click', () => setActiveTab('all'));
+        tabFavoritesBtn.addEventListener('click', () => setActiveTab('favorites'));
 
         function handleCopyClick(e) {
             const target = e.target.closest('.copy-btn');
@@ -1260,7 +1366,7 @@ function hideGemModal() {
 
         categoryCardsContainer.addEventListener('click', (e) => {
             const target = e.target;
-            if (target.id === 'clear-search-suggestions-btn') { homepageSearchInput.value = ''; clearSearchBtn.classList.add('hidden'); renderHomepage(); return; }
+            if (target.id === 'clear-search-suggestions-btn') { homepageSearchInput.value = ''; clearSearchBtn.classList.add('hidden'); currentTab === 'favorites' ? renderFavorites() : renderHomepage(); return; }
             if (target.closest('.copy-btn')) { handleCopyClick(e); return; }
             if (target.classList.contains('create-gem-btn')) { const content = target.dataset.promptContent; showGemModal(content); return; }
             if (target.classList.contains('see-all-btn')) { const categoryName = target.dataset.category; showAllCategoryView(categoryName); return; }
