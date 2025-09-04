@@ -8,6 +8,7 @@
           "title": "Understand the Role and Job Market",
           "requiredInputs": ["job role name"],
           "description": "Analyze roles comprehensively including responsibilities, skills, qualifications, and current market trends with salary benchmarks and demand insights.",
+          "featured": true,
           "quickStart": {
             "steps": [
               "Replace [job role] with the specific position you're researching (e.g., 'Senior React Developer')",
@@ -31,6 +32,7 @@
           "title": "Write Job Descriptions",
           "requiredInputs": ["job role", "company values", "specific requirements"],
           "description": "Create compelling, inclusive job descriptions that attract qualified candidates while clearly communicating role expectations and company culture.",
+          "featured": true,
           "quickStart": {
             "steps": [
               "Gather: job title, key responsibilities, required skills, and company culture info",
@@ -56,6 +58,7 @@
           "title": "Analyze and Find Potential Gaps in Resumes",
           "requiredInputs": ["resume content", "job requirements"],
           "description": "Identify resume inconsistencies, employment gaps, and potential red flags to prepare targeted interview questions and assessments.",
+          "featured": true,
           "quickStart": {
             "steps": [
               "Have the candidate's resume ready to review",
@@ -79,6 +82,7 @@
           "title": "Come Up With Interview Questions",
           "requiredInputs": ["job role", "key competencies"],
           "description": "Develop comprehensive interview questions that assess technical skills, soft skills, and cultural fit while ensuring legal compliance.",
+          "featured": true,
           "quickStart": {
             "steps": [
               "Identify the [job role] you're hiring for",
@@ -103,6 +107,7 @@
           "title": "Draft an Email to a Potential Candidate",
           "requiredInputs": ["candidate name", "job role", "next steps"],
           "description": "Compose professional, welcoming candidate communications that outline next steps and create positive first impressions of your organization.",
+          "featured": true,
           "quickStart": {
             "steps": [
               "Replace [name] with the candidate's actual name",
