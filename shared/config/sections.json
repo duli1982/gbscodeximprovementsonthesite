@@ -64,4 +64,30 @@
     "description": "View upcoming training dates and register to participate.",
     "url": "/events/"
   }
+  ,
+  {
+    "title": "Sourcing for MSP",
+    "description": "Training resources for sourcing within a Managed Service Provider model.",
+    "url": "/sourcing-msp/"
+  },
+  {
+    "title": "Admin Operations",
+    "description": "Guides and templates for administrative efficiency.",
+    "url": "/admin/"
+  },
+  {
+    "title": "Interview Scheduling",
+    "description": "Coordinate interviews and candidate communications effectively.",
+    "url": "/interview-scheduling/"
+  },
+  {
+    "title": "Compliance",
+    "description": "Policy guidance and risk mitigation resources.",
+    "url": "/compliance/"
+  },
+  {
+    "title": "Contract Creation",
+    "description": "Build and customize agreements using dynamic templates.",
+    "url": "/contract-creation/"
+  }
 ]

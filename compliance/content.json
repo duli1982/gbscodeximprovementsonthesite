@@ -1,0 +1,44 @@
+{
+  "policyAwareness": {
+    "lessons": [
+      "Understand data privacy regulations",
+      "Recognize anti-discrimination policies",
+      "Follow document retention guidelines"
+    ],
+    "exercises": [
+      "Identify potential privacy risks in a sample scenario.",
+      "Match policies to corresponding business cases."
+    ],
+    "resources": [
+      {
+        "text": "GDPR Overview",
+        "url": "https://gdpr.eu/what-is-gdpr/"
+      },
+      {
+        "text": "EEOC Compliance",
+        "url": "https://www.eeoc.gov/employers/small-business/3-what-are-my-responsibilities-under-eeo-laws"
+      }
+    ]
+  },
+  "riskMitigation": {
+    "lessons": [
+      "Conduct regular compliance audits",
+      "Report and document incidents promptly",
+      "Implement corrective actions"
+    ],
+    "exercises": [
+      "Outline a simple audit checklist.",
+      "Draft an incident report template."
+    ],
+    "resources": [
+      {
+        "text": "Compliance Audit Checklist",
+        "url": "https://www.smartsheet.com/compliance-audit-checklist"
+      },
+      {
+        "text": "OSHA Incident Reporting",
+        "url": "https://www.osha.gov/recordkeeping"
+      }
+    ]
+  }
+}

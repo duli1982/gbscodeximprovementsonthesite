@@ -1,0 +1,44 @@
+{
+  "coordinationBasics": {
+    "lessons": [
+      "Collect availability from stakeholders",
+      "Use shared calendars effectively",
+      "Handle time zone differences"
+    ],
+    "exercises": [
+      "Create an interview plan with three stakeholders.",
+      "Build a time zone conversion reference."
+    ],
+    "resources": [
+      {
+        "text": "Google Calendar Tips",
+        "url": "https://support.google.com/calendar/answer/2465776"
+      },
+      {
+        "text": "World Time Buddy",
+        "url": "https://www.worldtimebuddy.com/"
+      }
+    ]
+  },
+  "candidateCommunication": {
+    "lessons": [
+      "Draft clear invitation emails",
+      "Send reminders and confirmations",
+      "Provide logistics and follow-up steps"
+    ],
+    "exercises": [
+      "Write an interview confirmation email.",
+      "Prepare a template for rescheduling."
+    ],
+    "resources": [
+      {
+        "text": "Invitation Generator Tool",
+        "url": "scheduler.html"
+      },
+      {
+        "text": "Email Etiquette",
+        "url": "https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/email_etiquette.html"
+      }
+    ]
+  }
+}
