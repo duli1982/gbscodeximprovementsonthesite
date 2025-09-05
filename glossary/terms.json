@@ -1,0 +1,14 @@
+[
+  {
+    "term": "API",
+    "definition": "A set of rules that allows different software entities to communicate."
+  },
+  {
+    "term": "Browser",
+    "definition": "Software used to access information on the web."
+  },
+  {
+    "term": "Cache",
+    "definition": "Stored data that allows future requests to be served faster."
+  }
+]

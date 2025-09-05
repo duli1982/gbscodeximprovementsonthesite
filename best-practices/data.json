@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Use Clear Prompts",
+    "description": "Provide specific context and instructions to get better AI responses."
+  },
+  {
+    "title": "Review AI Output",
+    "description": "Always verify generated content for accuracy and tone."
+  },
+  {
+    "title": "Iterate with Feedback",
+    "description": "Refine prompts based on model output to improve results."
+  }
+]
