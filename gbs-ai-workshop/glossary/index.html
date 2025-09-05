@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Glossary - Gemini for GBS Leaders</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../shared/hub-button.css">
+  <link rel="stylesheet" href="../../shared/announcement.css">
+</head>
+<body class="antialiased pt-16">
+  <div id="header-placeholder"></div>
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section id="ai-glossary" class="page-section mb-16 md:mb-24 fade-in">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">AI Glossary</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">
+              Demystifying the language of AI. Use this searchable glossary to
+              quickly understand common terms and concepts.
+            </p>
+          </div>
+
+           <!-- cards -->
+          <div
+            id="glossary-grid"
+            class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            <!-- Bias -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Bias</h3>
+              <p class="text-gray-600 text-sm">
+                When an AI unfairly prefers certain things over others, often because of
+                biases in the data it was trained on.
+              </p>
+            </div>
+
+            <!-- Label -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Label</h3>
+              <p class="text-gray-600 text-sm">
+                A tag or answer given to data so AI knows what it is.
+              </p>
+            </div>
+
+            <!-- Model -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Model</h3>
+              <p class="text-gray-600 text-sm">
+                The final program that can perform tasks after learning from data.
+              </p>
+            </div>
+
+            <!-- Training -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Training</h3>
+              <p class="text-gray-600 text-sm">
+                The process where AI learns from data to get better at its job.
+              </p>
+            </div>
+
+            <!-- Chatbot -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Chatbot</h3>
+              <p class="text-gray-600 text-sm">
+                A computer program that talks to people using text or voice.
+              </p>
+            </div>
+
+            <!-- Dataset -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Dataset</h3>
+              <p class="text-gray-600 text-sm">
+                A big collection of information that AI learns from.
+              </p>
+            </div>
+
+            <!-- Algorithm -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Algorithm</h3>
+              <p class="text-gray-600 text-sm">
+                Step‑by‑step instructions for solving a problem.
+              </p>
+            </div>
+
+            <!-- Token -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Token</h3>
+              <p class="text-gray-600 text-sm">
+                Words or pieces of words AI uses to read and write text.
+              </p>
+            </div>
+
+            <!-- Overfitting -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Overfitting</h3>
+              <p class="text-gray-600 text-sm">
+                When AI learns the training data too closely and can’t handle new,
+                different examples.
+              </p>
+            </div>
+
+            <!-- AI Agent -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">AI Agent</h3>
+              <p class="text-gray-600 text-sm">
+                Software that carries out tasks for you on its own.
+              </p>
+            </div>
+
+            <!-- AI Ethics -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">AI Ethics</h3>
+              <p class="text-gray-600 text-sm">
+                Making sure AI is used in ways that are right and fair to everyone.
+              </p>
+            </div>
+
+            <!-- Explainability -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Explainability</h3>
+              <p class="text-gray-600 text-sm">
+                How easily people can understand why an AI made a certain decision.
+              </p>
+            </div>
+
+            <!-- Inference -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Inference</h3>
+              <p class="text-gray-600 text-sm">
+                When an AI uses what it has learned to answer new questions.
+              </p>
+            </div>
+
+            <!-- Turing Test -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Turing Test</h3>
+              <p class="text-gray-600 text-sm">
+                A test to see if a computer can act so human that people can't tell
+                the difference.
+              </p>
+            </div>
+
+            <!-- Prompt -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Prompt</h3>
+              <p class="text-gray-600 text-sm">
+                The text or question you give an AI to get a response.
+              </p>
+            </div>
+
+            <!-- Fine‑Tuning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Fine‑Tuning</h3>
+              <p class="text-gray-600 text-sm">
+                Training an AI on a smaller set of special data to improve it at
+                specific tasks.
+              </p>
+            </div>
+
+            <!-- Generative AI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Generative AI</h3>
+              <p class="text-gray-600 text-sm">
+                AI that can create new things such as pictures, writing, or music.
+              </p>
+            </div>
+
+            <!-- AI Automation -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">AI Automation</h3>
+              <p class="text-gray-600 text-sm">
+                Using AI to make processes run by themselves without people doing them.
+              </p>
+            </div>
+
+            <!-- Neural Network -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Neural Network</h3>
+              <p class="text-gray-600 text-sm">
+                A type of AI computer system built a little like the human brain.
+              </p>
+            </div>
+
+            <!-- Computer Vision -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Computer Vision</h3>
+              <p class="text-gray-600 text-sm">
+                AI that helps computers “see” and understand images or video.
+              </p>
+            </div>
+
+            <!-- Transfer Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Transfer Learning</h3>
+              <p class="text-gray-600 text-sm">
+                Using an AI already trained for one job to help with a new, different
+                job.
+              </p>
+            </div>
+
+            <!-- Guardrails -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Guardrails (in AI)</h3>
+              <p class="text-gray-600 text-sm">
+                Built‑in checks that stop an AI from making mistakes or causing harm.
+              </p>
+            </div>
+
+            <!-- Open Source AI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Open Source AI</h3>
+              <p class="text-gray-600 text-sm">
+                AI whose design code is public, so anyone can use or change it.
+              </p>
+            </div>
+
+            <!-- Deep Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Deep Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI that learns through very large neural networks with many layers.
+              </p>
+            </div>
+
+            <!-- Reinforcement Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Reinforcement Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI learns by trying things and getting rewards for good actions.
+              </p>
+            </div>
+
+            <!-- Hallucination -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Hallucination (in AI)</h3>
+              <p class="text-gray-600 text-sm">
+                When AI makes up information that isn’t true or isn’t based on facts.
+              </p>
+            </div>
+
+            <!-- Zero‑Shot Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Zero‑Shot Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI completes a new task it wasn’t directly trained on just by reading
+                the task description.
+              </p>
+            </div>
+
+            <!-- Speech Recognition -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Speech Recognition</h3>
+              <p class="text-gray-600 text-sm">
+                AI that turns spoken words into written text.
+              </p>
+            </div>
+
+            <!-- Supervised Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Supervised Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI learns from data that’s already labeled with the right answers.
+              </p>
+            </div>
+
+            <!-- Model Context Protocol -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Model Context Protocol</h3>
+              <p class="text-gray-600 text-sm">
+                Rules for how AIs share and use the information they learn from.
+              </p>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Machine Learning</h3>
+              <p class="text-gray-600 text-sm">
+                A way for computers to learn by seeing many examples.
+              </p>
+            </div>
+
+            <!-- AI (Artificial Intelligence) -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">AI (Artificial Intelligence)</h3>
+              <p class="text-gray-600 text-sm">
+                Technology that makes computers act like smart humans do.
+              </p>
+            </div>
+
+            <!-- Unsupervised Learning -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3">Unsupervised Learning</h3>
+              <p class="text-gray-600 text-sm">
+                AI finds patterns in data that has no labels.
+              </p>
+            </div>
+
+            <!-- LLM -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">LLM (Large Language Model)</h3>
+              <p class="text-gray-600 text-sm">
+                An AI model that understands and writes text, trained on vast amounts
+                of data.
+              </p>
+            </div>
+
+            <!-- ASI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">ASI (Artificial Superintelligence)</h3>
+              <p class="text-gray-600 text-sm">
+                An AI even smarter than the smartest human ever.
+              </p>
+            </div>
+
+            <!-- GPU -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">GPU (Graphics Processing Unit)</h3>
+              <p class="text-gray-600 text-sm">
+                Special computer chips that help train and run AI models faster.
+              </p>
+            </div>
+
+            <!-- NLP -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">NLP (Natural Language Processing)</h3>
+              <p class="text-gray-600 text-sm">
+                AI that understands and works with human language.
+              </p>
+            </div>
+
+            <!-- AGI -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">AGI (Artificial General Intelligence)</h3>
+              <p class="text-gray-600 text-sm">
+                A super‑smart AI that can learn and do any task a human can.
+              </p>
+            </div>
+
+            <!-- GPT -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">GPT (Generative Pre‑trained Transformer)</h3>
+              <p class="text-gray-600 text-sm">
+                A famous type of AI that writes text like a human.
+              </p>
+            </div>
+
+            <!-- API -->
+            <div class="glossary-card bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-bold text-[#2C5282] mb-3 break-words whitespace-normal">API (Application Programming Interface)</h3>
+              <p class="text-gray-600 text-sm">
+                A way for different programs to talk to each other and access AI
+                features.
+              </p>
+            </div>
+
+          </div>
+        </section>
+  </main>
+  <script type="module" src="../main.js"></script>
+  <script src="../../shared/announcement.js" defer></script>
+</body>
+</html>

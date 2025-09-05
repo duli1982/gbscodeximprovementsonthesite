@@ -8,8 +8,9 @@ async function loadPartial(selector, url) {
 }
 
 async function loadPartials() {
-  await loadPartial('#header-placeholder', 'header.html');
-  await loadPartial('#tools-placeholder', 'tools.html');
+  const baseUrl = new URL('.', import.meta.url);
+  await loadPartial('#header-placeholder', new URL('header.html', baseUrl));
+  await loadPartial('#tools-placeholder', new URL('tools.html', baseUrl));
   document.dispatchEvent(new Event('partialsLoaded'));
 }
 
