@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../shared/hub-button.css">
+    <link rel="stylesheet" href="../shared/announcement.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <a href="../index.html" class="hub-button">Back To Hub</a>
+    <div id="nav-placeholder"></div>
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Contract Builder</h1>
+        <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow">
+            <div class="grid gap-4 mb-4">
+                <input type="text" id="partyA" placeholder="Party A" class="border rounded p-2">
+                <input type="text" id="partyB" placeholder="Party B" class="border rounded p-2">
+                <input type="text" id="services" placeholder="Services" class="border rounded p-2">
+                <input type="date" id="date" class="border rounded p-2">
+                <textarea id="terms" rows="4" placeholder="Additional terms" class="border rounded p-2"></textarea>
+                <button id="generate" class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Generate Contract</button>
+                <textarea id="output" rows="10" class="border rounded p-2"></textarea>
+                <button id="download" class="bg-green-600 text-white py-2 rounded hover:bg-green-700">Download Markdown</button>
+                <a href="index.html" class="text-blue-600 underline text-center">Back to Contract Creation Hub</a>
+            </div>
+        </div>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+        function buildContract() {
+            const partyA = document.getElementById('partyA').value || 'Party A';
+            const partyB = document.getElementById('partyB').value || 'Party B';
+            const services = document.getElementById('services').value || 'services';
+            const date = document.getElementById('date').value || new Date().toISOString().split('T')[0];
+            const terms = document.getElementById('terms').value || '';
+            return `# Service Contract\n\n**Date:** ${date}\n\n**Parties:**\n- ${partyA}\n- ${partyB}\n\n**Services:** ${services}\n\n${terms}\n\n---\n\nSigned,\n\n${partyA}\n\n${partyB}`;
+        }
+        document.getElementById('generate').addEventListener('click', function() {
+            document.getElementById('output').value = buildContract();
+        });
+        document.getElementById('download').addEventListener('click', function() {
+            const blob = new Blob([document.getElementById('output').value || buildContract()], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'contract.md';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+    <script src="../shared/announcement.js" defer></script>
+    <script src="../shared/scripts/navigation.js" defer></script>
+    <script src="../shared/scripts/footer.js" defer></script>
+</body>
+</html>
