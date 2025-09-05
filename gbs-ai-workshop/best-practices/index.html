@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Practices - Gemini for GBS Leaders</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../shared/hub-button.css">
+  <link rel="stylesheet" href="../../shared/announcement.css">
+</head>
+<body class="antialiased pt-16">
+  <div id="header-placeholder"></div>
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <section id="best-practices" class="page-section mb-16 md:mb-24 fade-in">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Best Practices for Prompting</h2>
+        <p class="max-w-3xl mx-auto text-lg text-gray-600">Follow these golden rules to get the best possible
+            results from Gemini. A well-crafted prompt is the key to unlocking high-quality, relevant, and
+            actionable outputs.</p>
+    </div>
+    
+    <!-- ONE SINGLE GRID CONTAINER FOR ALL CARDS -->
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        
+        <!-- Cards 1-10: Original Best Practices -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">1. Give Clear Context</h3>
+            <p class="text-gray-600 mb-4">Tell Gemini what you're doing and set the scene clearly. The more
+                background it has, the more relevant the response will be.</p>
+            <div class="code-block text-sm">"I have a biology test in 2 days."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">2. Be Specific About Output</h3>
+            <p class="text-gray-600 mb-4">Say exactly what you want back. Include the desired type, format,
+                length, or structure.</p>
+            <div class="code-block text-sm">"Give 10 MCQs on the circulatory system."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">3. Assign the AI a Role</h3>
+            <p class="text-gray-600 mb-4">Define who Gemini should act as. This adds a specific tone, style, and
+                level of expertise to the response.</p>
+            <div class="code-block text-sm">"Act as a finance professor."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">4. Break It Into Steps</h3>
+            <p class="text-gray-600 mb-4">For complex requests, break your needs into logical steps. This helps
+                the AI follow your train of thought.</p>
+            <div class="code-block text-sm">"Explain in 3 steps using an analogy."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">5. Provide Examples</h3>
+            <p class="text-gray-600 mb-4">If you want a specific style or structure, give Gemini an example of
+                what you're looking for.</p>
+            <div class="code-block text-sm">"Give 3 ways photosynthesis helps humans."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">6. Refine and Retry</h3>
+            <p class="text-gray-600 mb-4">Your first try is a draft. If the output isn't quite right, tweak your
+                prompt with more clarity and try again.</p>
+            <div class="code-block text-sm">Better input → better output.</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">7. Avoid Vague Language</h3>
+            <p class="text-gray-600 mb-4">Don't be general. Vague inputs lead to weak replies. Replace "help me
+                study" with a specific request.</p>
+            <div class="code-block text-sm">Skip "Help me study."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">8. Treat It Like an Assistant</h3>
+            <p class="text-gray-600 mb-4">Write like you're briefing a new team member. Be simple, clear, and
+                direct in your instructions.</p>
+            <div class="code-block text-sm">Like giving a task to an intern.</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">9. Choose a Format</h3>
+            <p class="text-gray-600 mb-4">Explicitly tell the AI how to present the information, whether as
+                bullets, a numbered list, a table, or prose.</p>
+            <div class="code-block text-sm">"Summarize as a table."</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">10. Provide Negative Constraints</h3>
+            <p class="text-gray-600 mb-4">Sometimes it's helpful to tell the AI what *not* to do. This helps
+                narrow its focus and avoid unwanted information.</p>
+            <div class="code-block text-sm">"Write an email to the team, but do not use overly corporate
+                jargon."</div>
+        </div>
+
+        <!-- Section Divider Card -->
+        <div class="col-span-full bg-blue-50 p-6 rounded-lg border-l-4 border-[#2C5282] mt-8">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-2">Pro-Level Prompting Examples</h3>
+            <p class="text-gray-600">Garbage in, garbage out. If your prompts suck, your results will too. Here's how pros prompt Gemini.</p>
+        </div>
+
+        <!-- Cards 11-17: Professional Examples (Simplified Structure) -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">11. Be Specific and Detailed</h3>
+            <p class="text-gray-600 mb-4">Transform vague requests into detailed, actionable prompts. Provide context, specify your role, set clear expectations, and include concrete deliverables.</p>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block text-sm bg-red-50 border border-red-200 p-3 rounded">"Help me source candidates"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block text-sm bg-green-50 border border-green-200 p-3 rounded">"You're a senior RPO sourcing specialist at Randstad. I need 15 qualified candidates for (ROLE) at (CLIENT COMPANY) within 72 hours. Create a multi-channel sourcing strategy including: Boolean search strings for LinkedIn/Indeed, 5 alternative sourcing channels, and a candidate outreach sequence that gets 40%+ response rates. Show me the exact messaging for each touchpoint."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">12. Provide Context and Expertise</h3>
+            <p class="text-gray-600 mb-4">Give the AI a specific role and detailed context. Include your goals, constraints, and expected deliverables to get professional-level output.</p>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block text-sm bg-red-50 border border-red-200 p-3 rounded">"Schedule interviews better"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block text-sm bg-green-50 border border-green-200 p-3 rounded">"I'm coordinating interviews for 12 candidates across 3 time zones with 5 hiring managers who have conflicting calendars. Create an interview scheduling framework that: minimizes back-and-forth emails, provides candidate experience scoring, includes backup plans for no-shows, and sends automated reminders. Give me template emails for each scenario."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">13. Handle Administrative Tasks</h3>
+            <p class="text-gray-600 mb-4">Transform general admin requests into specific workflow management tasks with clear deliverables and stakeholder considerations.</p>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block text-sm bg-red-50 border border-red-200 p-3 rounded">"Handle this admin work"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block text-sm bg-green-50 border border-green-200 p-3 rounded">"You're managing RPO operations for 200+ open positions across 15 hiring managers. Design a workflow that tracks: candidate pipeline stages, client feedback loops, supplier performance metrics, and SLA compliance. Create status update templates that keep stakeholders informed without overwhelming them with details."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">14. Manage Client Relations</h3>
+            <p class="text-gray-600 mb-4">Convert complaint handling into strategic relationship management with data-backed solutions and clear action plans.</p>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block text-sm bg-red-50 border border-red-200 p-3 rounded">"Deal with this complaint"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block text-sm bg-green-50 border border-green-200 p-3 rounded">"A hiring manager is escalating because their Software Engineer position has been open 45 days with only 3 interviews scheduled. They're threatening to pull the RPO contract. Draft a response that: acknowledges their frustration, provides data-backed explanations, presents 3 immediate action items, and repositions this as a partnership opportunity. Include follow-up cadence."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">15. Improve Candidate Experience</h3>
+            <p class="text-gray-600 mb-4">Turn vague improvement requests into systematic process optimization with measurable outcomes and client-ready documentation.</p>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block text-sm bg-red-50 border border-red-200 p-3 rounded">"Improve candidate experience"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block text-sm bg-green-50 border border-green-200 p-3 rounded">"Map the entire candidate journey for our RPO process from application to offer. Identify the top 5 friction points that cause 60% candidate drop-off. For each point, provide: specific improvement tactics, implementation timeline, success metrics, and client communication strategy. Make this bulletproof for client reviews."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">16. Manage Supplier Performance</h3>
+            <p class="text-gray-600 mb-4">Convert basic supplier management into comprehensive performance tracking systems with accountability measures and improvement frameworks.</p>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block text-sm bg-red-50 border border-red-200 p-3 rounded">"Manage supplier relationships"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block text-sm bg-green-50 border border-green-200 p-3 rounded">"Create a supplier performance scorecard for our MSP program managing 25 staffing vendors. Include metrics that matter to clients: quality of candidates, time-to-submit, rate competitiveness, and diversity sourcing. Design quarterly business reviews that drive accountability and identify top/bottom performers with clear improvement plans."</div>
+            </div>
+        </div>
+
+        <!-- Section Divider Card -->
+        <div class="col-span-full bg-green-50 p-6 rounded-lg border-l-4 border-green-500 mt-8">
+            <h3 class="text-2xl font-bold text-green-700 mb-2">Universal Pro Tips</h3>
+            <p class="text-gray-600">Master these patterns for any situation - from cover letters to complex analysis.</p>
+        </div>
+
+        <!-- Cards 17-22: Universal Pro Tips -->
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">17. Make Content Better</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block bg-red-50 border border-red-200 text-sm p-3 rounded">"Make this better"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block bg-green-50 border border-green-200 text-sm p-3 rounded">"Analyze this (CONTENT) for: clarity (1-10), emotional impact (1-10), and actionability (1-10). Rewrite to score 10/10 on all metrics. Show me what you changed and why."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">18. Write Cover Letters</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block bg-red-50 border border-red-200 text-sm p-3 rounded">"Write me a cover letter"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block bg-green-50 border border-green-200 text-sm p-3 rounded">"You're a hiring manager at (COMPANY) who's rejected 200 applicants. I'm applying for (ROLE). Write a cover letter that makes you stop and say 'finally, someone who gets it.'"</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">19. Explain Complex Topics</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block bg-red-50 border border-red-200 text-sm p-3 rounded">"Explain this simply"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block bg-green-50 border border-green-200 text-sm p-3 rounded">"Explain (COMPLEX TOPIC) using only the 1,000 most common English words. Then explain it through a metaphor involving (FAMILIAR ACTIVITY). Make a 10-year-old excited to learn more."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">20. Optimize Resumes</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block bg-red-50 border border-red-200 text-sm p-3 rounded">"Help me with my resume"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block bg-green-50 border border-green-200 text-sm p-3 rounded">"Here's the job posting: (PASTE). Here's my experience: (PASTE). Rewrite my bullets to use their exact keywords while quantifying impact with numbers that make me undeniable."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">21. Professional Tone</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block bg-red-50 border border-red-200 text-sm p-3 rounded">"Make this sound professional"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block bg-green-50 border border-green-200 text-sm p-3 rounded">"Rewrite this using the vocabulary and tone of (SPECIFIC INDUSTRY) leaders. Include 3 subtle power phrases that make me sound experienced without arrogance."</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-2xl font-bold text-[#2C5282] mb-3">22. Edit and Improve</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-bold text-red-600 mb-2">❌ Don't say:</h4>
+                <div class="code-block bg-red-50 border border-red-200 text-sm p-3 rounded">"Check my grammar"</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-green-600 mb-2">✅ Say:</h4>
+                <div class="code-block bg-green-50 border border-green-200 text-sm p-3 rounded">"Edit this for: grammar, flow, and impact. Show me the top 3 changes that transform this from amateur to executive-level communication. Explain the psychology behind each edit."</div>
+            </div>
+        </div>
+        
+    </div> <!-- End of single grid container -->
+</section>
+  </main>
+  <script type="module" src="../main.js"></script>
+  <script src="../../shared/announcement.js" defer></script>
+</body>
+</html>
