@@ -4,7 +4,7 @@ const path = require('path');
 // Define paths relative to the project root
 const projectRoot = path.join(__dirname, '..');
 const paths = {
-    gbsPrompts: path.join(projectRoot, 'gbs-prompts/prompts.json'),
+    gbsPrompts: path.join(projectRoot, 'scripts/prompts.json'),
     dailyFocus: path.join(projectRoot, 'daily-focus/focus.json'),
     dailyFocusPrompts: path.join(projectRoot, 'daily-focus/prompts.json'),
     outputDir: path.join(projectRoot, 'shared'),
