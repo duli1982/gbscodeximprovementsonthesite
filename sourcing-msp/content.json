@@ -1,0 +1,44 @@
+{
+  "mspFundamentals": {
+    "lessons": [
+      "Overview of Managed Service Provider models",
+      "Define roles and responsibilities within MSP engagements",
+      "Track key performance metrics for suppliers"
+    ],
+    "exercises": [
+      "Map the MSP workflow for a new client engagement.",
+      "List three KPIs to evaluate supplier performance."
+    ],
+    "resources": [
+      {
+        "text": "Randstad MSP Overview",
+        "url": "https://www.randstad.com/workforce-insights/talent-management/managed-services-programs/"
+      },
+      {
+        "text": "SIA: What is an MSP?",
+        "url": "https://www2.staffingindustry.com/eng/Research/Research-Store/MSP"
+      }
+    ]
+  },
+  "supplierCollaboration": {
+    "lessons": [
+      "Set expectations with staffing suppliers",
+      "Monitor compliance and service levels",
+      "Maintain a regular communication cadence"
+    ],
+    "exercises": [
+      "Draft a supplier onboarding checklist.",
+      "Create an outline for a quarterly business review."
+    ],
+    "resources": [
+      {
+        "text": "Vendor Management Basics",
+        "url": "https://resources.workable.com/tutorial/vendor-management"
+      },
+      {
+        "text": "Supplier Evaluation Template",
+        "url": "https://www.smartsheet.com/free-vendor-supplier-evaluation-forms"
+      }
+    ]
+  }
+}

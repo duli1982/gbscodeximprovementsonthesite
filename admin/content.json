@@ -1,0 +1,44 @@
+{
+  "taskAutomation": {
+    "lessons": [
+      "Automate meeting notes with AI tools",
+      "Generate recurring status reports",
+      "Standardize outbound emails"
+    ],
+    "exercises": [
+      "Use a template to draft a weekly update.",
+      "Turn a meeting transcript into an action item list."
+    ],
+    "resources": [
+      {
+        "text": "Zapier Automation Guide",
+        "url": "https://zapier.com/blog/what-is-automation/"
+      },
+      {
+        "text": "Notion Template Gallery",
+        "url": "https://www.notion.so/templates"
+      }
+    ]
+  },
+  "documentation": {
+    "lessons": [
+      "Apply consistent naming conventions",
+      "Store files in shared drives securely",
+      "Understand basic version control"
+    ],
+    "exercises": [
+      "Organize a project folder following naming guidelines.",
+      "Create a template for weekly reports."
+    ],
+    "resources": [
+      {
+        "text": "Google Drive File Best Practices",
+        "url": "https://support.google.com/drive/answer/2494822"
+      },
+      {
+        "text": "Atlassian: What is Version Control?",
+        "url": "https://www.atlassian.com/git/tutorials/what-is-version-control"
+      }
+    ]
+  }
+}

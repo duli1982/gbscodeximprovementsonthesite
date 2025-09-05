@@ -1,0 +1,44 @@
+{
+  "contractEssentials": {
+    "lessons": [
+      "Define key components of a staffing contract",
+      "Clarify payment terms and milestones",
+      "Include compliance and confidentiality clauses"
+    ],
+    "exercises": [
+      "Review a sample agreement and highlight critical sections.",
+      "List mandatory clauses for a new client contract."
+    ],
+    "resources": [
+      {
+        "text": "Contract Builder Tool",
+        "url": "builder.html"
+      },
+      {
+        "text": "Contract Basics",
+        "url": "https://www.lawinsider.com/resources/contract-basics"
+      }
+    ]
+  },
+  "customizationReview": {
+    "lessons": [
+      "Adapt templates for client-specific needs",
+      "Validate contract language with stakeholders",
+      "Track revisions and approvals"
+    ],
+    "exercises": [
+      "Customize a clause for a unique client requirement.",
+      "Create a checklist for final contract review."
+    ],
+    "resources": [
+      {
+        "text": "Clause Library Example",
+        "url": "https://www.onecle.com/blog/contract-clause/"
+      },
+      {
+        "text": "DocuSign Agreement Cloud",
+        "url": "https://www.docusign.com/products/agreement-cloud"
+      }
+    ]
+  }
+}
